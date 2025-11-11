@@ -1,0 +1,90 @@
+{% extends 'autenticacion/dashboard.html' %}
+{% load ventas_tags %}
+{% block title %}{% if venta %}Editar{% else %}Nueva{% endif %} Venta – SynCroPro{% endblock %}
+{% block content %}
+<div class="container mt-4">
+  <div class="card shadow-lg">
+    <div class="card-header bg-{% if venta %}warning{% else %}success{% endif %} text-white">
+      <h5 class="mb-0"><i class="bi bi-{% if venta %}pencil{% else %}plus-circle{% endif %}"></i> {% if venta %}Editar{% else %}Nueva{% endif %} Venta</h5>
+    </div>
+    <div class="card-body">
+      <form method="post" id="venta-form">{% csrf_token %}
+        <div class="row mb-3">
+          <div class="col-md-4">{{ form.numero.label_tag }} {{ form.numero }}</div>
+          <div class="col-md-4">{{ form.cliente_nombre.label_tag }} {{ form.cliente_nombre }}</div>
+          <div class="col-md-4">{{ form.correo.label_tag }} {{ form.correo }}</div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-6">{{ form.razon_social.label_tag }} {{ form.razon_social }}</div>
+          <div class="col-md-6">{{ form.telefono.label_tag }} {{ form.telefono }}</div>
+        </div>
+        <div class="mb-3">{{ form.direccion_envio.label_tag }} {{ form.direccion_envio }}</div>
+        <div class="mb-3">{{ form.estado.label_tag }} {{ form.estado }}</div>
+        <hr class="my-4">
+        <h5 class="text-primary mb-3"><i class="bi bi-box-seam"></i> Detalles de la venta</h5>
+        {{ formset.management_form }}
+        <div id="detalles-formset">
+          {% for form in formset %}
+            <div class="card mb-2 p-2 detalle-form">
+              <div class="row align-items-center">
+                <div class="col-md-5">{{ form.descripcion.label_tag }} {{ form.descripcion }}</div>
+                <div class="col-md-2">{{ form.cantidad.label_tag }} {{ form.cantidad }}</div>
+                <div class="col-md-2">{{ form.precio_unit.label_tag }} {{ form.precio_unit }}</div>
+                <div class="col-md-2">{{ form.descuento.label_tag }} {{ form.descuento }}</div>
+                <div class="col-md-1 d-flex align-items-end">
+                  {% if formset.can_delete %}{{ form.DELETE }}{% endif %}
+                  <button type="button" class="btn btn-sm btn-outline-danger remove-detalle"><i class="bi bi-trash"></i></button>
+                </div>
+              </div>
+              {{ form.id }}
+            </div>
+          {% endfor %}
+        </div>
+        <button type="button" id="add-detalle" class="btn btn-outline-primary btn-sm"><i class="bi bi-plus-circle"></i> Agregar línea</button>
+        <div class="d-flex justify-content-between mt-4">
+          <a href="{% url 'ventas:lista' %}" class="btn btn-secondary"><i class="bi bi-x-circle"></i> Cancelar</a>
+          <button type="submit" class="btn btn-success"><i class="bi bi-save"></i> Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<template id="empty-detalle">
+  <div class="card mb-2 p-2 detalle-form">
+    <div class="row align-items-center">
+      <div class="col-md-5"><input type="text" name="detalles-__prefix__-descripcion" class="form-control" placeholder="Descripción"></div>
+      <div class="col-md-2"><input type="number" name="detalles-__prefix__-cantidad" class="form-control" min="1" value="1"></div>
+      <div class="col-md-2"><input type="number" name="detalles-__prefix__-precio_unit" class="form-control" step="0.01" value="0"></div>
+      <div class="col-md-2"><input type="number" name="detalles-__prefix__-descuento" class="form-control" step="0.1" min="0" max="100" value="0"></div>
+      <div class="col-md-1"><button type="button" class="btn btn-sm btn-outline-danger remove-detalle"><i class="bi bi-trash"></i></button></div>
+    </div>
+    <input type="hidden" name="detalles-__prefix__-id"><input type="hidden" name="detalles-__prefix__-DELETE">
+  </div>
+</template>
+
+<script>
+/* mismo patrón que producción */
+document.addEventListener("DOMContentLoaded", () => {
+  const formsetDiv = document.getElementById("detalles-formset");
+  const addBtn     = document.getElementById("add-detalle");
+  const totalForms = document.querySelector('[name="detalles-TOTAL_FORMS"]');
+  const tmpl       = document.getElementById("empty-detalle").innerHTML;
+
+  addBtn.addEventListener("click", () => {
+    const idx = parseInt(totalForms.value);
+    formsetDiv.insertAdjacentHTML("beforeend", tmpl.replace(/__prefix__/g, idx));
+    totalForms.value = idx + 1;
+  });
+
+  formsetDiv.addEventListener("click", e => {
+    if (e.target.closest(".remove-detalle")) {
+      const row = e.target.closest(".detalle-form");
+      const del = row.querySelector('[name$="-DELETE"]');
+      if (del) { del.checked = true; row.style.display = "none"; }
+      else row.remove();
+    }
+  });
+});
+</script>
+{% endblock %}

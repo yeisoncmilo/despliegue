@@ -1,0 +1,49 @@
+{% extends 'autenticacion/dashboard.html' %}
+{% load ventas_tags %}
+{% block title %}Ventas – SynCroPro{% endblock %}
+{% block content %}
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-success"><i class="bi bi-cart4"></i> Ventas</h2>
+    <a href="{% url 'ventas:nueva' %}" class="btn btn-success"><i class="bi bi-plus-circle"></i> Nueva Venta</a>
+  </div>
+  <div class="card">
+    <div class="card-header bg-light"><h6 class="mb-0">Listado</h6></div>
+    <div class="card-body">
+      {% if ventas %}
+      <div class="table-responsive">
+        <table class="table table-hover align-middle">
+          <thead>
+            <tr><th>Número</th><th>Cliente</th><th>Fecha</th><th>Estado</th><th>Total</th><th width="1%">Acciones</th></tr>
+          </thead>
+          <tbody>
+            {% for v in ventas %}
+            <tr>
+              <td><strong>#{{ v.numero }}</strong></td>
+              <td>{{ v.cliente_nombre }}</td>
+              <td>{{ v.fecha|date:"d/m/Y" }}</td>
+              <td>
+                <span class="badge bg-{% if v.estado == 'pagada' %}success{% elif v.estado == 'anulada' %}danger{% else %}warning{% endif %}">
+                  {{ v.get_estado_display }}
+                </span>
+              </td>
+              <td>$ {{ v.total|money }}</td>
+              <td>
+                <div class="btn-group btn-group-sm">
+                  <a href="{% url 'ventas:detalle' v.pk %}" class="btn btn-outline-info" title="Ver"><i class="bi bi-eye"></i></a>
+                  <a href="{% url 'ventas:editar' v.pk %}" class="btn btn-outline-warning" title="Editar"><i class="bi bi-pencil"></i></a>
+                  <a href="{% url 'ventas:eliminar' v.pk %}" class="btn btn-outline-danger" title="Eliminar"><i class="bi bi-trash"></i></a>
+                </div>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% else %}
+      <div class="text-center py-5 text-muted"><i class="bi bi-inbox" style="font-size:3rem"></i><p class="mt-2">No hay ventas registradas.</p></div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

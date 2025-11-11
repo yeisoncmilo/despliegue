@@ -1,0 +1,199 @@
+{% extends 'autenticacion/dashboard.html' %}
+{% block title %}Editar Orden #{{ orden.numero }} - SynCroPro{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow-lg">
+        <div class="card-header bg-warning text-white">
+            <h5 class="mb-0"><i class="bi bi-pencil"></i> Editar Orden #{{ orden.numero }}</h5>
+        </div>
+        <div class="card-body">
+            <form method="post" id="orden-form" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                {% if form.errors %}
+                <div class="alert alert-danger">
+                    <strong>Errores en el formulario:</strong>
+                    <ul>
+                        {% for field in form %}
+                            {% if field.errors %}
+                                <li>{{ field.label }}: {{ field.errors|join:", " }}</li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                <!-- DATOS DE LA ORDEN -->
+                <h5 class="text-primary mb-3">Datos de la Orden</h5>
+                
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Número de orden</label>
+                        <input type="text" class="form-control" value="{{ orden.numero }}" disabled>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Estado *</label>
+                        {{ form.estado }}
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Nombre del cliente *</label>
+                        {{ form.cliente_nombre }}
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Razón social</label>
+                        {{ form.razon_social }}
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">NIT</label>
+                        {{ form.nit }}
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Dirección</label>
+                        {{ form.direccion }}
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Teléfono *</label>
+                        {{ form.telefono }}
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Correo electrónico *</label>
+                        {{ form.correo_electronico }}
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label class="form-label">Tipo de tablero *</label>
+                        {{ form.tipo_tablero }}
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Dimensiones *</label>
+                        {{ form.dimensiones }}
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Color *</label>
+                        {{ form.color }}
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Observaciones</label>
+                    {{ form.observaciones }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Cotización relacionada</label>
+                    {{ form.cotizacion }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Archivo adjunto</label>
+                    {% if orden.archivo %}
+                        <p class="text-muted">Actual: <a href="{{ orden.archivo.url }}" target="_blank">{{ orden.archivo.name }}</a></p>
+                    {% endif %}
+                    {{ form.archivo }}
+                </div>
+
+                <!-- MATERIALES -->
+                <h5 class="text-primary mb-3 mt-4">Materiales de Producción</h5>
+                <div id="materiales-container">
+                    {% for material in orden.materiales.all %}
+                    <div class="card mb-3 material-container p-3" data-material-index="{{ forloop.counter0 }}">
+                        <div class="row">
+                            <div class="col-md-8 mb-2">
+                                <label class="form-label">Nombre del material *</label>
+                                <input type="text" name="material_{{ forloop.counter0 }}_nombre" class="form-control material-nombre" value="{{ material.nombre }}" required>
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <label class="form-label">Cantidad *</label>
+                                <input type="number" name="material_{{ forloop.counter0 }}_cantidad" class="form-control material-cantidad" min="1" value="{{ material.cantidad }}" required>
+                            </div>
+                            <div class="col-md-1 d-flex align-items-end mb-2">
+                                <button type="button" class="btn btn-sm btn-outline-danger remove-material">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <button type="button" class="btn btn-outline-primary mt-2" id="add-material">
+                    <i class="bi bi-plus-circle"></i> Agregar Material
+                </button>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="{% url 'produccion:detalle' orden.pk %}" class="btn btn-secondary">
+                        <i class="bi bi-x-circle"></i> Cancelar
+                    </a>
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-save"></i> Guardar Cambios
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+// Inicializar contador con materiales existentes
+let materialIndex = document.querySelectorAll('.material-container').length || 0;
+
+// Template para nuevo material
+function crearMaterialHTML(index) {
+    return `
+        <div class="card mb-3 material-container p-3" data-material-index="${index}">
+            <div class="row">
+                <div class="col-md-8 mb-2">
+                    <label class="form-label">Nombre del material *</label>
+                    <input type="text" name="material_${index}_nombre" class="form-control material-nombre" required>
+                </div>
+                <div class="col-md-3 mb-2">
+                    <label class="form-label">Cantidad *</label>
+                    <input type="number" name="material_${index}_cantidad" class="form-control material-cantidad" min="1" value="1" required>
+                </div>
+                <div class="col-md-1 d-flex align-items-end mb-2">
+                    <button type="button" class="btn btn-sm btn-outline-danger remove-material">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// Evento agregar material
+document.getElementById('add-material').addEventListener('click', function() {
+    const container = document.getElementById('materiales-container');
+    const newMaterial = document.createElement('div');
+    newMaterial.innerHTML = crearMaterialHTML(materialIndex);
+    container.appendChild(newMaterial.firstElementChild);
+    materialIndex++;
+    actualizarEventListeners();
+});
+
+// Actualizar event listeners
+function actualizarEventListeners() {
+    // Eliminar material
+    document.querySelectorAll('.remove-material').forEach(btn => {
+        btn.replaceWith(btn.cloneNode(true));
+    });
+    document.querySelectorAll('.remove-material').forEach(btn => {
+        btn.addEventListener('click', function() {
+            this.closest('.material-container').remove();
+        });
+    });
+}
+
+// Inicializar
+actualizarEventListeners();
+</script>
+{% endblock %}

@@ -1,0 +1,152 @@
+{% extends "autenticacion/dashboard.html" %} 
+{% load humanize %} 
+{% block title %}Lista de Cotizaciones - SynCroPro{% endblock %} 
+{% block content %}
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-primary">Cotizaciones</h2>
+    <a href="{% url 'cotizaciones:crear' %}" class="btn btn-primary">
+      <i class="bi bi-plus-circle"></i> Nueva Cotización
+    </a>
+  </div>
+
+  {% if messages %} 
+  {% for message in messages %}
+  <div
+    class="alert alert-{{ message.tags }} alert-dismissible fade show"
+    role="alert"
+  >
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  {% endfor %} 
+  {% endif %}
+
+  <div class="card shadow-lg">
+    <div class="card-header bg-light">
+      <h6 class="mb-0">Listado de Cotizaciones</h6>
+    </div>
+    <div class="card-body">
+      {% if cotizaciones %}
+      <div class="table-responsive">
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Número</th>
+              <th>Cliente</th>
+              <th>Razón Social</th>
+              <th>NIT</th>
+              <th>Estado</th>
+              <th>Fecha</th>
+              <th>Total</th>
+              <th class="text-center">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for c in cotizaciones %}
+            <tr>
+              <td><strong>#{{ c.numero }}</strong></td>
+              <td>{{ c.cliente_nombre }}</td>
+              <td>{{ c.razon_social|default:"-" }}</td>
+              <td>{{ c.nit|default:"-" }}</td>
+              <td>
+                <span
+                  class="badge bg-{% if c.estado == 'aprobada' %}success{% elif c.estado == 'rechazada' %}danger{% else %}warning{% endif %}"
+                >
+                  {{ c.get_estado_display }}
+                </span>
+              </td>
+              <td>{{ c.fecha_creacion|date:"d/m/Y H:i" }}</td>
+              <td class="text-end fw-bold">
+                ${{ c.total|floatformat:0|intcomma }}
+              </td>
+              <td class="text-center">
+                <div class="btn-group" role="group">
+                  <a
+                    href="{% url 'cotizaciones:detalle' c.id %}"
+                    class="btn btn-sm btn-info"
+                    title="Ver detalle"
+                  >
+                    <i class="bi bi-eye"></i>
+                  </a>
+                  <a
+                    href="{% url 'cotizaciones:pdf' c.id %}"
+                    class="btn btn-sm btn-danger"
+                    title="Descargar PDF"
+                    target="_blank"
+                  >
+                    <i class="bi bi-file-pdf"></i>
+                  </a>
+                  <a
+                    href="{% url 'cotizaciones:enviar_correo' c.id %}"
+                    class="btn btn-sm btn-success"
+                    title="Enviar por correo"
+                    onclick="return confirm('¿Enviar cotización a {{ c.correo_electronico }}?')"
+                  >
+                    <i class="bi bi-envelope"></i>
+                  </a>
+                  <a
+                    href="{% url 'cotizaciones:editar' c.id %}"
+                    class="btn btn-sm btn-warning"
+                    title="Editar"
+                  >
+                    <i class="bi bi-pencil"></i>
+                  </a>
+                  <a
+                    href="{% url 'cotizaciones:eliminar' c.id %}"
+                    class="btn btn-sm btn-outline-danger"
+                    title="Eliminar"
+                  >
+                    <i class="bi bi-trash"></i>
+                  </a>
+                </div>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% else %}
+      <div class="text-center py-4">
+        <i
+          class="bi bi-file-earmark-text"
+          style="font-size: 3rem; color: #6c757d"
+        ></i>
+        <p class="text-muted mt-2">No hay cotizaciones registradas.</p>
+        <a href="{% url 'cotizaciones:crear' %}" class="btn btn-primary mt-2">
+          <i class="bi bi-plus-circle"></i> Crear Primera Cotización
+        </a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if is_paginated %}
+  <nav aria-label="Page navigation" class="mt-4">
+    <ul class="pagination justify-content-center">
+      {% if page_obj.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?page=1">Primera</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+      </li>
+      {% endif %}
+      <li class="page-item active">
+        <span class="page-link">
+          Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+        </span>
+      </li>
+      {% if page_obj.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.next_page_number }}">Siguiente</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Última</a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+  {% endif %}
+</div>
+{% endblock %}

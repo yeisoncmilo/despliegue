@@ -1,0 +1,367 @@
+{% extends 'autenticacion/dashboard.html' %}
+
+{% block title %}Nueva Factura - SynCroPro{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow-lg">
+        <div class="card-header bg-success text-white">
+            <h5 class="mb-0"><i class="bi bi-plus-circle me-2"></i> Nueva Factura</h5>
+        </div>
+        <div class="card-body">
+            <form method="post" id="factura-form">
+                {% csrf_token %}
+
+                <!-- Cargar desde fuente existente -->
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <label for="cotizacion-select" class="form-label">Cargar desde cotización</label>
+                        <select id="cotizacion-select" class="form-select">
+                            <option value="">Seleccione una cotización</option>
+                            {% for cotizacion in cotizaciones %}
+                                <option value="{{ cotizacion.id }}">#{{ cotizacion.numero }} - {{ cotizacion.cliente_nombre }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="orden-select" class="form-label">Cargar desde orden de producción</label>
+                        <select id="orden-select" class="form-select">
+                            <option value="">Seleccione una orden</option>
+                            {% for orden in ordenes %}
+                                <option value="{{ orden.id }}">#{{ orden.numero }} - {{ orden.cliente_nombre }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-4 d-flex align-items-end">
+                        <button type="button" id="cargar-cotizacion" class="btn btn-outline-primary me-2">
+                            <i class="bi bi-download"></i> Cotización
+                        </button>
+                        <button type="button" id="cargar-orden" class="btn btn-outline-info">
+                            <i class="bi bi-download"></i> Orden
+                        </button>
+                    </div>
+                </div>
+
+                <hr>
+
+                <!-- Datos de la factura -->
+                <h5 class="text-primary mb-3">Datos de la Factura</h5>
+                
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Número de factura</label>
+                        {{ form.numero }}
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Método de pago</label>
+                        {{ form.metodo_pago }}
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Nombre del cliente</label>
+                        {{ form.cliente_nombre }}
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Razón social</label>
+                        {{ form.razon_social }}
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label class="form-label">NIT</label>
+                        {{ form.nit }}
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Teléfono</label>
+                        {{ form.telefono }}
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Correo electrónico</label>
+                        {{ form.correo_electronico }}
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-8">
+                        <label class="form-label">Dirección</label>
+                        {{ form.direccion }}
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Fecha de vencimiento</label>
+                        {{ form.fecha_vencimiento }}
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label class="form-label">Descuento global (%)</label>
+                        {{ form.descuento_global }}
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Cotización relacionada</label>
+                        {{ form.cotizacion }}
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Orden de producción</label>
+                        {{ form.orden_produccion }}
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Observaciones</label>
+                    {{ form.observaciones }}
+                </div>
+
+                <hr>
+                
+                <!-- Items -->
+                <h5 class="text-primary mb-3">Items de la Factura</h5>
+                {{ formset.management_form }}
+
+                <div id="items-formset">
+                    {% for form in formset %}
+                        <div class="card mb-3 item-form p-3">
+                            <div class="row">
+                                <div class="col-md-5 mb-2">
+                                    <label class="form-label">Descripción</label>
+                                    {{ form.descripcion }}
+                                </div>
+                                <div class="col-md-2 mb-2">
+                                    <label class="form-label">Cantidad</label>
+                                    {{ form.cantidad }}
+                                </div>
+                                <div class="col-md-2 mb-2">
+                                    <label class="form-label">Valor unitario</label>
+                                    {{ form.valor_unitario }}
+                                </div>
+                                <div class="col-md-2 mb-2">
+                                    <label class="form-label">Descuento (%)</label>
+                                    {{ form.descuento }}
+                                </div>
+                                <div class="col-md-1 d-flex align-items-end mb-2">
+                                    <button type="button" class="btn btn-sm btn-outline-danger remove-item">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Campos ocultos -->
+                            {{ form.id }}
+                            {{ form.DELETE }}
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <button type="button" class="btn btn-outline-primary mt-2" id="add-item">
+                    <i class="bi bi-plus-circle"></i> Agregar Item
+                </button>
+
+                <div class="d-flex justify-content-end mt-4">
+                    <a href="{% url 'ventas:lista' %}" class="btn btn-secondary me-2">
+                        <i class="bi bi-x-circle"></i> Cancelar
+                    </a>
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-save"></i> Guardar Factura
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Plantilla para nuevos formularios de items -->
+<template id="empty-item-form">
+    <div class="card mb-3 item-form p-3">
+        <div class="row">
+            <div class="col-md-5 mb-2">
+                <label class="form-label">Descripción</label>
+                <input type="text" name="items-__prefix__-descripcion" class="form-control">
+            </div>
+            <div class="col-md-2 mb-2">
+                <label class="form-label">Cantidad</label>
+                <input type="number" name="items-__prefix__-cantidad" class="form-control" min="1" value="1">
+            </div>
+            <div class="col-md-2 mb-2">
+                <label class="form-label">Valor unitario</label>
+                <input type="number" name="items-__prefix__-valor_unitario" class="form-control" step="0.01" value="0">
+            </div>
+            <div class="col-md-2 mb-2">
+                <label class="form-label">Descuento (%)</label>
+                <input type="number" name="items-__prefix__-descuento" class="form-control" step="0.1" min="0" max="100" value="0">
+            </div>
+            <div class="col-md-1 d-flex align-items-end mb-2">
+                <button type="button" class="btn btn-sm btn-outline-danger remove-item">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Campos ocultos -->
+        <input type="hidden" name="items-__prefix__-id" id="id_items-__prefix__-id">
+        <input type="hidden" name="items-__prefix__-DELETE" id="id_items-__prefix__-DELETE">
+    </div>
+</template>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const formsetDiv = document.getElementById("items-formset");
+    const addButton = document.getElementById("add-item");
+    const totalForms = document.getElementById("id_items-TOTAL_FORMS");
+    const emptyFormTemplate = document.getElementById("empty-item-form");
+    const cotizacionSelect = document.getElementById("cotizacion-select");
+    const ordenSelect = document.getElementById("orden-select");
+    const cargarCotizacionBtn = document.getElementById("cargar-cotizacion");
+    const cargarOrdenBtn = document.getElementById("cargar-orden");
+    
+    function updateFormsIndex() {
+        const forms = formsetDiv.querySelectorAll(".item-form");
+        totalForms.value = forms.length;
+        
+        forms.forEach((form, index) => {
+            form.querySelectorAll("input, select, textarea").forEach(el => {
+                if (el.name) {
+                    el.name = el.name.replace(/items-\d+-/, `items-${index}-`);
+                }
+                if (el.id) {
+                    el.id = el.id.replace(/id_items-\d+-/, `id_items-${index}-`);
+                }
+            });
+        });
+    }
+    
+    function addRemoveEventListeners() {
+        document.querySelectorAll(".remove-item").forEach(btn => {
+            btn.addEventListener("click", function() {
+                const form = this.closest(".item-form");
+                const deleteField = form.querySelector("input[name$='DELETE']");
+                
+                if (deleteField) {
+                    deleteField.value = "on";
+                    form.style.display = "none";
+                } else {
+                    form.remove();
+                    updateFormsIndex();
+                }
+            });
+        });
+    }
+    
+    function limpiarItems() {
+        const forms = formsetDiv.querySelectorAll(".item-form");
+        forms.forEach(form => {
+            const deleteField = form.querySelector("input[name$='DELETE']");
+            if (deleteField) deleteField.value = "on";
+            form.style.display = "none";
+        });
+    }
+    
+    function agregarItem(itemData) {
+        const total = parseInt(totalForms.value);
+        const newFormHtml = emptyFormTemplate.innerHTML.replace(/__prefix__/g, total);
+        const newForm = document.createElement("div");
+        newForm.innerHTML = newFormHtml;
+        
+        const itemForm = newForm.querySelector(".item-form");
+        if (itemData.descripcion) itemForm.querySelector("input[name$='descripcion']").value = itemData.descripcion;
+        if (itemData.cantidad) itemForm.querySelector("input[name$='cantidad']").value = itemData.cantidad;
+        if (itemData.valor_unitario) itemForm.querySelector("input[name$='valor_unitario']").value = itemData.valor_unitario;
+        if (itemData.descuento) itemForm.querySelector("input[name$='descuento']").value = itemData.descuento;
+        
+        formsetDiv.appendChild(itemForm);
+        totalForms.value = total + 1;
+        addRemoveEventListeners();
+    }
+    
+    // Agregar nuevo item manualmente
+    addButton.addEventListener("click", function() {
+        agregarItem({});
+    });
+    
+    // Cargar datos desde cotización
+    cargarCotizacionBtn.addEventListener("click", function() {
+        const cotizacionId = cotizacionSelect.value;
+        if (!cotizacionId) {
+            alert("Por favor, seleccione una cotización.");
+            return;
+        }
+        
+        const url = "{% url 'facturacion:ajax_cargar_cotizacion' 0 %}".replace('0', cotizacionId);
+        
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                // Llenar campos del cliente
+                if (data.cliente_nombre) document.getElementById("id_cliente_nombre").value = data.cliente_nombre;
+                if (data.razon_social) document.getElementById("id_razon_social").value = data.razon_social;
+                if (data.telefono) document.getElementById("id_telefono").value = data.telefono;
+                if (data.correo_electronico) document.getElementById("id_correo_electronico").value = data.correo_electronico;
+                
+                // Establecer cotización relacionada
+                if (document.getElementById("id_cotizacion")) {
+                    document.getElementById("id_cotizacion").value = cotizacionId;
+                }
+                
+                // Limpiar items existentes y agregar nuevos
+                limpiarItems();
+                if (data.items && data.items.length > 0) {
+                    data.items.forEach(item => {
+                        agregarItem(item);
+                    });
+                }
+                
+                alert("Datos de la cotización cargados correctamente.");
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Error al cargar los datos de la cotización.");
+            });
+    });
+    
+    // Cargar datos desde orden de producción
+    cargarOrdenBtn.addEventListener("click", function() {
+        const ordenId = ordenSelect.value;
+        if (!ordenId) {
+            alert("Por favor, seleccione una orden de producción.");
+            return;
+        }
+        
+        const url = "{% url 'facturacion:ajax_cargar_orden' 0 %}".replace('0', ordenId);
+        
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                // Llenar campos del cliente
+                if (data.cliente_nombre) document.getElementById("id_cliente_nombre").value = data.cliente_nombre;
+                if (data.razon_social) document.getElementById("id_razon_social").value = data.razon_social;
+                if (data.telefono) document.getElementById("id_telefono").value = data.telefono;
+                if (data.correo_electronico) document.getElementById("id_correo_electronico").value = data.correo_electronico;
+                
+                // Establecer orden relacionada
+                if (document.getElementById("id_orden_produccion")) {
+                    document.getElementById("id_orden_produccion").value = ordenId;
+                }
+                
+                // Limpiar items existentes y agregar nuevos
+                limpiarItems();
+                if (data.items && data.items.length > 0) {
+                    data.items.forEach(item => {
+                        agregarItem(item);
+                    });
+                }
+                
+                alert("Datos de la orden de producción cargados correctamente.");
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Error al cargar los datos de la orden de producción.");
+            });
+    });
+    
+    // Inicializar event listeners
+    addRemoveEventListeners();
+});
+</script>
+{% endblock %}

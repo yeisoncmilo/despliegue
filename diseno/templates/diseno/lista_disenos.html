@@ -1,0 +1,103 @@
+{% extends "autenticacion/dashboard.html" %}
+{% block title %}Lista de Diseños - SynCroPro{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-primary">Diseños</h2>
+        <a href="{% url 'diseno:nuevo_sin_orden' %}" class="btn btn-primary">
+            <i class="bi bi-plus-circle"></i> Nuevo Diseño
+        </a>
+    </div>
+
+    <!-- Lista de Diseños -->
+    <div class="card shadow-lg">
+        <div class="card-header bg-light">
+            <h6 class="mb-0">Listado de Diseños</h6>
+        </div>
+        <div class="card-body">
+            {% if disenos %}
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Número</th>
+                            <th>Nombre</th>
+                            <th>Tipo</th>
+                            <th>Orden</th>
+                            <th>Fecha</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for d in disenos %}
+                        <tr>
+                            <td><strong>#{{ d.numero }}</strong></td>
+                            <td>{{ d.nombre }}</td>
+                            <td>
+                                <span class="badge bg-{% if d.tipo == 'orden' %}success{% else %}secondary{% endif %}">
+                                    {{ d.get_tipo_display }}
+                                </span>
+                            </td>
+                            <td>{% if d.orden %}#{{ d.orden.numero }}{% else %}—{% endif %}</td>
+                            <td>{{ d.fecha_creacion|date:"d/m/Y" }}</td>
+                            <td>
+                                <div class="btn-group">
+                                    <a href="{% url 'diseno:detalle' d.id %}" class="btn btn-sm btn-info" title="Ver">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                    <a href="{% url 'diseno:editar' d.id %}" class="btn btn-sm btn-warning" title="Editar">
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+                                    <a href="{% url 'diseno:eliminar' d.id %}" class="btn btn-sm btn-danger" title="Eliminar">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="text-center py-4">
+                <i class="bi bi-folder-x" style="font-size: 3rem; color: #6c757d;"></i>
+                <p class="text-muted mt-2">No hay diseños registrados.</p>
+                <a href="{% url 'diseno:nuevo_sin_orden' %}" class="btn btn-primary mt-2">
+                    <i class="bi bi-plus-circle"></i> Crear Primer Diseño
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Paginación -->
+    {% if is_paginated %}
+    <nav aria-label="Page navigation" class="mt-4">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1">Primera</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+            </li>
+            {% endif %}
+
+            <li class="page-item active">
+                <span class="page-link">Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+            </li>
+
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Siguiente</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Última</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+</div>
+{% endblock %}

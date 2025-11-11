@@ -1,0 +1,108 @@
+{% extends 'autenticacion/dashboard.html' %}
+{% block title %}Nuevo Diseño - SynCroPro{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0"><i class="bi bi-plus-circle me-2"></i> Nuevo Diseño</h5>
+        </div>
+        <div class="card-body">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label class="form-label">Número</label>
+                    {{ form.numero }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Nombre</label>
+                    {{ form.nombre }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Descripción</label>
+                    {{ form.descripcion }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Tipo</label>
+                    {{ form.tipo }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Orden (solo si aplica)</label>
+                    {{ form.orden }}
+                </div>
+
+                <h5 class="text-primary mb-3">Archivos</h5>
+                {{ formset.management_form }}
+                <div id="archivos-formset">
+                    {% for form in formset %}
+                        <div class="card mb-3 archivo-form p-3">
+                            <label class="form-label">Archivo</label>
+                            {{ form.archivo }}
+                            {{ form.DELETE }}
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <button type="button" class="btn btn-outline-success btn-sm" id="add-archivo">
+                    <i class="bi bi-plus-circle"></i> Agregar Archivo
+                </button>
+
+                <div class="d-flex justify-content-between mt-4">
+                    {% if orden %}
+                        <a href="{% url 'produccion:detalle' orden.pk %}" class="btn btn-secondary">
+                            <i class="bi bi-arrow-left"></i> Cancelar
+                        </a>
+                    {% else %}
+                        <a href="{% url 'diseno:lista' %}" class="btn btn-secondary">
+                            <i class="bi bi-arrow-left"></i> Cancelar
+                        </a>
+                    {% endif %}
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-save"></i> Guardar Diseño
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<template id="empty-archivo-form">
+    <div class="card mb-3 archivo-form p-3">
+        <label class="form-label">Archivo</label>
+        <input type="file" name="archivos-__prefix__-archivo" class="form-control">
+        <input type="hidden" name="archivos-__prefix__-id">
+        <input type="hidden" name="archivos-__prefix__-DELETE">
+    </div>
+</template>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const formsetDiv = document.getElementById("archivos-formset");
+    const addButton = document.getElementById("add-archivo");
+    const totalForms = document.getElementById("id_archivos-TOTAL_FORMS");
+    const emptyFormTemplate = document.getElementById("empty-archivo-form");
+
+    function updateFormsIndex() {
+        const forms = formsetDiv.querySelectorAll(".archivo-form");
+        totalForms.value = forms.length;
+        forms.forEach((form, index) => {
+            form.querySelectorAll("input").forEach(el => {
+                if (el.name) el.name = el.name.replace(/archivos-\d+-/, `archivos-${index}-`);
+                if (el.id) el.id = el.id.replace(/id_archivos-\d+-/, `id_archivos-${index}-`);
+            });
+        });
+    }
+
+    addButton.addEventListener("click", function () {
+        const total = parseInt(totalForms.value);
+        const newFormHtml = emptyFormTemplate.innerHTML.replace(/__prefix__/g, total);
+        const newForm = document.createElement("div");
+        newForm.className = "archivo-form card mb-3 p-3";
+        newForm.innerHTML = newFormHtml;
+        formsetDiv.appendChild(newForm);
+        totalForms.value = total + 1;
+        updateFormsIndex();
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'autenticacion/dashboard.html' %}
+{% block title %}Diseño #{{ diseno.numero }} - SynCroPro{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-primary">Diseño #{{ diseno.numero }}</h2>
+        <div>
+            <a href="{% url 'diseno:editar' diseno.pk %}" class="btn btn-warning me-2">
+                <i class="bi bi-pencil"></i> Editar
+            </a>
+            {% if diseno.orden %}
+                <a href="{% url 'produccion:detalle' diseno.orden.pk %}" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i> Volver a la Orden
+                </a>
+            {% else %}
+                <a href="{% url 'diseno:lista' %}" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i> Volver al listado
+                </a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-info text-white">
+            <h5 class="mb-0">Información del Diseño</h5>
+        </div>
+        <div class="card-body">
+            <p><strong>Nombre:</strong> {{ diseno.nombre }}</p>
+            <p><strong>Descripción:</strong> {{ diseno.descripcion|linebreaks }}</p>
+            <p><strong>Tipo:</strong> {{ diseno.get_tipo_display }}</p>
+            <p><strong>Orden de Producción:</strong> {% if diseno.orden %}#{{ diseno.orden.numero }}{% else %}—{% endif %}</p>
+            <p><strong>Fecha de creación:</strong> {{ diseno.fecha_creacion|date:"d/m/Y H:i" }}</p>
+        </div>
+    </div>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-secondary text-white">
+            <h5 class="mb-0">Archivos</h5>
+        </div>
+        <div class="card-body">
+            {% if diseno.archivos.all %}
+                <ul class="list-unstyled">
+                    {% for archivo in diseno.archivos.all %}
+                        <li class="mb-2">
+                            <a href="{{ archivo.archivo.url }}" target="_blank" class="btn btn-outline-primary btn-sm">
+                                <i class="bi bi-file-earmark"></i> {{ archivo.nombre }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="text-muted">No hay archivos adjuntos.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
