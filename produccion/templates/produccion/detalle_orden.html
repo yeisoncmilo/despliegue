@@ -1,119 +1,189 @@
 {% extends 'autenticacion/dashboard.html' %}
+{% load humanize %}
 {% block title %}Orden #{{ orden.numero }} - SynCroPro{% endblock %}
 {% block content %}
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="text-primary">Orden de Producción #{{ orden.numero }}</h2>
+        <h2 class="text-success">Orden de Producción #{{ orden.numero }}</h2>
         <div>
+            <a href="{% url 'produccion:pdf' orden.pk %}" class="btn btn-danger me-2" target="_blank">
+                <i class="bi bi-file-pdf"></i> Descargar PDF
+            </a>
+            <a href="{% url 'produccion:enviar_correo' orden.pk %}" 
+               class="btn btn-success me-2"
+               onclick="return confirm('¿Enviar orden a {{ orden.correo_electronico }}?')">
+                <i class="bi bi-envelope"></i> Enviar por Correo
+            </a>
             <a href="{% url 'produccion:editar' orden.pk %}" class="btn btn-warning me-2">
                 <i class="bi bi-pencil"></i> Editar
             </a>
-            <a href="{% url 'produccion:eliminar' orden.pk %}" class="btn btn-danger">
+            <a href="{% url 'produccion:eliminar' orden.pk %}" class="btn btn-outline-danger">
                 <i class="bi bi-trash"></i> Eliminar
             </a>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-6">
-            <div class="card shadow-sm mb-4">
-                <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">Información General</h5>
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="bi bi-person"></i> Datos del Cliente</h5>
                 </div>
                 <div class="card-body">
-                    <p><strong>Cliente:</strong> {{ orden.cliente_nombre }}</p>
-                    <p><strong>Razón social:</strong> {{ orden.razon_social }}</p>
-                    <p><strong>NIT:</strong> {{ orden.nit|default:"—" }}</p>
-                    <p><strong>Dirección:</strong> {{ orden.direccion|default:"—" }}</p>
-                    <p><strong>Teléfono:</strong> {{ orden.telefono }}</p>
-                    <p><strong>Correo:</strong> {{ orden.correo_electronico }}</p>
-                    <p><strong>Tipo de tablero:</strong> {{ orden.tipo_tablero }}</p>
-                    <p><strong>Dimensiones:</strong> {{ orden.dimensiones }}</p>
-                    <p><strong>Color:</strong> {{ orden.color }}</p>
-                    <p><strong>Cantidad:</strong> {{ orden.cantidad|default:"—" }}</p>
-                    <p><strong>Estado:</strong>
-                        <span class="badge bg-{% if orden.estado == 'pendiente' %}warning{% elif orden.estado == 'en_proceso' %}info{% else %}success{% endif %}">
-                            {{ orden.get_estado_display }}
-                        </span>
-                    </p>
-                    <p><strong>Fecha de creación:</strong> {{ orden.fecha_creacion|date:"d/m/Y H:i" }}</p>
-                    {% if orden.observaciones %}
-                        <p><strong>Observaciones:</strong> {{ orden.observaciones|linebreaks }}</p>
-                    {% endif %}
+                    <div class="row mb-2"><div class="col-4 fw-bold">Nombre:</div><div class="col-8">{{ orden.cliente_nombre }}</div></div>
+                    <div class="row mb-2"><div class="col-4 fw-bold">Razón Social:</div><div class="col-8">{{ orden.razon_social|default:"-" }}</div></div>
+                    <div class="row mb-2"><div class="col-4 fw-bold">NIT:</div><div class="col-8">{{ orden.nit|default:"-" }}</div></div>
+                    <div class="row mb-2"><div class="col-4 fw-bold">Dirección:</div><div class="col-8">{{ orden.direccion|default:"-" }}</div></div>
+                    <div class="row mb-2"><div class="col-4 fw-bold">Teléfono:</div><div class="col-8">{{ orden.telefono }}</div></div>
+                    <div class="row mb-2"><div class="col-4 fw-bold">Email:</div><div class="col-8">{{ orden.correo_electronico }}</div></div>
                 </div>
             </div>
         </div>
-
-        <div class="col-md-6">
-            <div class="card shadow-sm mb-4">
-                <div class="card-header bg-secondary text-white">
-                    <h5 class="mb-0">Cotización relacionada</h5>
+        
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0"><i class="bi bi-info-circle"></i> Información de la Orden</h5>
                 </div>
                 <div class="card-body">
-                    {% if orden.cotizacion %}
-                        <p><strong>Número:</strong> #{{ orden.cotizacion.numero }}</p>
-                        <p><strong>Total:</strong> ${{ orden.cotizacion.total }}</p>
-                        <a href="{% url 'cotizaciones:detalle' orden.cotizacion.pk %}" class="btn btn-sm btn-outline-primary">
-                            <i class="bi bi-eye"></i> Ver cotización
-                        </a>
-                    {% else %}
-                        <p class="text-muted">No hay cotización asociada.</p>
-                    {% endif %}
+                    <div class="row mb-2"><div class="col-4 fw-bold">Tipo Tablero:</div><div class="col-8">{{ orden.tipo_tablero }}</div></div>
+                    <div class="row mb-2"><div class="col-4 fw-bold">Dimensiones:</div><div class="col-8">{{ orden.dimensiones }}</div></div>
+                    <div class="row mb-2"><div class="col-4 fw-bold">Color:</div><div class="col-8">{{ orden.color }}</div></div>
+                    <div class="row mb-2"><div class="col-4 fw-bold">Estado:</div><div class="col-8">
+                        <span class="badge bg-{% if orden.estado == 'finalizada' %}success{% elif orden.estado == 'en_proceso' %}warning{% elif orden.estado == 'cancelada' %}danger{% else %}secondary{% endif %}">
+                            {{ orden.get_estado_display }}
+                        </span>
+                    </div></div>
+                    <div class="row mb-2"><div class="col-4 fw-bold">Fecha Creación:</div><div class="col-8">{{ orden.fecha_creacion|date:"d/m/Y H:i" }}</div></div>
+                    <div class="row mb-2"><div class="col-4 fw-bold">Total Materiales:</div><div class="col-8">{{ orden.total_materiales }} items</div></div>
                 </div>
             </div>
         </div>
     </div>
+
+    {% if orden.cotizacion %}
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="bi bi-link"></i> Cotización Relacionada</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>Número:</strong> #{{ orden.cotizacion.numero }}</p>
+                            <p><strong>Cliente:</strong> {{ orden.cotizacion.cliente_nombre }}</p>
+                            <p><strong>Fecha:</strong> {{ orden.cotizacion.fecha_creacion|date:"d/m/Y" }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Estado:</strong> 
+                                <span class="badge bg-{% if orden.cotizacion.estado == 'aprobada' %}success{% elif orden.cotizacion.estado == 'rechazada' %}danger{% else %}warning{% endif %}">
+                                    {{ orden.cotizacion.get_estado_display }}
+                                </span>
+                            </p>
+                            <p><strong>Total:</strong> ${{ orden.cotizacion.total|floatformat:0|intcomma }}</p>
+                            <a href="{% url 'cotizaciones:detalle' orden.cotizacion.pk %}" class="btn btn-sm btn-outline-primary">
+                                <i class="bi bi-eye"></i> Ver Cotización
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if orden.archivo %}
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0"><i class="bi bi-paperclip"></i> Archivo Adjunto</h5>
+                </div>
+                <div class="card-body">
+                    <p class="mb-0">
+                        <a href="{{ orden.archivo.url }}" target="_blank" class="btn btn-sm btn-outline-secondary">
+                            <i class="bi bi-download"></i> Descargar {{ orden.archivo.name|slice:"20" }}
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
 
     <div class="row">
         <div class="col-12">
             <div class="card shadow-sm">
                 <div class="card-header bg-light">
-                    <h5 class="mb-0">Materiales</h5>
+                    <h5 class="mb-0"><i class="bi bi-box-seam"></i> Materiales de Producción</h5>
                 </div>
                 <div class="card-body">
-                    {% if orden.materiales.exists %}
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Material</th>
-                                        <th>Cantidad</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for material in orden.materiales.all %}
-                                    <tr>
-                                        <td>{{ material.nombre }}</td>
-                                        <td>{{ material.cantidad }}</td>
-                                    </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
+                    {% if materiales %}
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Material</th>
+                                    <th class="text-center">Cantidad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for material in materiales %}
+                                <tr>
+                                    <td>{{ material.nombre }}</td>
+                                    <td class="text-center">{{ material.cantidad }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                     {% else %}
-                        <p class="text-muted">No hay materiales registrados para esta orden.</p>
+                    <p class="text-muted">No hay materiales registrados para esta orden.</p>
                     {% endif %}
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Botones de Acción -->
-    <div class="mt-3">
-        <a href="{% url 'diseno:nuevo' orden.pk %}" class="btn btn-outline-primary">
-            <i class="bi bi-plus-circle"></i> Agregar Diseño
-        </a>
-        {% if orden.disenos.exists %}
-            <a href="{% url 'diseno:detalle' orden.disenos.first.pk %}" class="btn btn-info">
-                <i class="bi bi-eye"></i> Ver Diseños
-            </a>
-        {% endif %}
+    {% if orden.observaciones %}
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-warning text-white">
+                    <h5 class="mb-0"><i class="bi bi-card-text"></i> Observaciones</h5>
+                </div>
+                <div class="card-body">
+                    <p class="mb-0">{{ orden.observaciones|linebreaks }}</p>
+                </div>
+            </div>
+        </div>
     </div>
+    {% endif %}
 
-    <div class="d-flex justify-content-between mt-4">
-        <a href="{% url 'produccion:lista' %}" class="btn btn-outline-secondary">
-            <i class="bi bi-arrow-left"></i> Volver al listado
-        </a>
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="d-flex justify-content-between">
+                <a href="{% url 'produccion:lista' %}" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i> Volver al Listado
+                </a>
+                <div>
+                    <a href="{% url 'produccion:pdf' orden.pk %}" class="btn btn-danger me-2" target="_blank">
+                        <i class="bi bi-file-pdf"></i> PDF
+                    </a>
+                    <a href="{% url 'produccion:enviar_correo' orden.pk %}" class="btn btn-success me-2"
+                       onclick="return confirm('¿Enviar orden a {{ orden.correo_electronico }}?')">
+                        <i class="bi bi-envelope"></i> Enviar
+                    </a>
+                    <a href="{% url 'produccion:editar' orden.pk %}" class="btn btn-warning me-2">
+                        <i class="bi bi-pencil"></i> Editar
+                    </a>
+                    <a href="{% url 'produccion:eliminar' orden.pk %}" class="btn btn-outline-danger">
+                        <i class="bi bi-trash"></i> Eliminar
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

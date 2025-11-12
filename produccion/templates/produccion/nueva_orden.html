@@ -1,5 +1,7 @@
 {% extends 'autenticacion/dashboard.html' %}
-{% block title %}Nueva Orden de Producción - SynCroPro{% endblock %}
+{% load humanize %}
+{% block title %}Nueva Orden - SynCroPro{% endblock %}
+
 {% block content %}
 <div class="container mt-4">
     <div class="card shadow-lg">
@@ -23,114 +25,145 @@
                 </div>
                 {% endif %}
 
-                <!-- Selección de cotización (mantiene AJAX) -->
-                <div class="row mb-4">
-                    <div class="col-md-8">
-                        <label class="form-label">Cargar desde cotización (opcional)</label>
-                        <select id="cotizacion-select" class="form-select">
-                            <option value="">Seleccione una cotización</option>
-                            {% for cotizacion in cotizaciones %}
-                                <option value="{{ cotizacion.id }}">#{{ cotizacion.numero }} - {{ cotizacion.cliente_nombre }}</option>
-                            {% endfor %}
-                        </select>
+                <div class="card mb-4">
+                    <div class="card-header bg-light">
+                        <h6 class="mb-0"><i class="bi bi-link"></i> Cargar desde Cotización (Opcional)</h6>
                     </div>
-                    <div class="col-md-4 d-flex align-items-end">
-                        <button type="button" id="cargar-cotizacion" class="btn btn-outline-primary">
-                            <i class="bi bi-download"></i> Cargar datos
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <label class="form-label">Seleccionar cotización</label>
+                                <select id="cotizacion-select" class="form-select">
+                                    <option value="">-- Seleccione una cotización --</option>
+                                    {% for cotizacion in cotizaciones %}
+                                        <option value="{{ cotizacion.id }}">#{{ cotizacion.numero }} - {{ cotizacion.cliente_nombre }} (${{ cotizacion.total|floatformat:0|intcomma }})</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-md-4 d-flex align-items-end">
+                                <button type="button" id="cargar-cotizacion" class="btn btn-outline-primary w-100">
+                                    <i class="bi bi-download"></i> Cargar Datos
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="my-4">
+
+                <div class="card mb-4">
+                    <div class="card-header bg-light">
+                        <h6 class="mb-0"><i class="bi bi-person"></i> Datos del Cliente</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Número de Orden</label>
+                                <input type="text" class="form-control" value="{{ numero_generado }}" disabled>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Estado *</label>
+                                {{ form.estado }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Nombre del Cliente *</label>
+                                {{ form.cliente_nombre }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Razón Social</label>
+                                {{ form.razon_social }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">NIT</label>
+                                {{ form.nit }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Dirección</label>
+                                {{ form.direccion }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Teléfono *</label>
+                                {{ form.telefono }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Correo Electrónico *</label>
+                                {{ form.correo_electronico }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header bg-light">
+                        <h6 class="mb-0"><i class="bi bi-hammer"></i> Detalles de Producción</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">Tipo de Tablero *</label>
+                                {{ form.tipo_tablero }}
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">Dimensiones *</label>
+                                {{ form.dimensiones }}
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">Color *</label>
+                                {{ form.color }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label class="form-label">Observaciones</label>
+                                {{ form.observaciones }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header bg-light">
+                        <h6 class="mb-0"><i class="bi bi-link-45deg"></i> Cotización Relacionada</h6>
+                    </div>
+                    <div class="card-body">
+                        <label class="form-label">Seleccionar cotización (opcional)</label>
+                        {{ form.cotizacion }}
+                        <small class="form-text text-muted">Asocia esta orden a una cotización existente</small>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header bg-light">
+                        <h6 class="mb-0"><i class="bi bi-paperclip"></i> Archivo Adjunto</h6>
+                    </div>
+                    <div class="card-body">
+                        <label class="form-label">Subir archivo (plano, imagen, PDF)</label>
+                        {{ form.archivo }}
+                        <small class="form-text text-muted">Formatos: PDF, JPG, PNG, DWG, DXF (Máx 5MB)</small>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                        <h6 class="mb-0"><i class="bi bi-box-seam"></i> Materiales de Producción</h6>
+                        <button type="button" class="btn btn-primary btn-sm" id="add-material">
+                            <i class="bi bi-plus-circle"></i> Agregar Material
                         </button>
                     </div>
-                </div>
-
-                <hr>
-
-                <!-- DATOS DE LA ORDEN -->
-                <h5 class="text-primary mb-3">Datos de la Orden</h5>
-                
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label class="form-label">Número de orden</label>
-                        <input type="text" class="form-control" value="{{ numero_generado }}" disabled>
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label">Estado *</label>
-                        {{ form.estado }}
+                    <div class="card-body">
+                        <div id="materiales-container">
+                        </div>
                     </div>
                 </div>
 
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label class="form-label">Nombre del cliente *</label>
-                        {{ form.cliente_nombre }}
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label">Razón social</label>
-                        {{ form.razon_social }}
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label class="form-label">NIT</label>
-                        {{ form.nit }}
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label">Dirección</label>
-                        {{ form.direccion }}
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label class="form-label">Teléfono *</label>
-                        {{ form.telefono }}
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label">Correo electrónico *</label>
-                        {{ form.correo_electronico }}
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <div class="col-md-4">
-                        <label class="form-label">Tipo de tablero *</label>
-                        {{ form.tipo_tablero }}
-                    </div>
-                    <div class="col-md-4">
-                        <label class="form-label">Dimensiones *</label>
-                        {{ form.dimensiones }}
-                    </div>
-                    <div class="col-md-4">
-                        <label class="form-label">Color *</label>
-                        {{ form.color }}
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Observaciones</label>
-                    {{ form.observaciones }}
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Cotización relacionada</label>
-                    {{ form.cotizacion }}
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Archivo adjunto (plano, imagen, PDF, etc.)</label>
-                    {{ form.archivo }}
-                </div>
-
-                <!-- MATERIALES -->
-                <h5 class="text-primary mb-3 mt-4">Materiales de Producción</h5>
-                <div id="materiales-container">
-                    <!-- Materiales dinámicos se agregarán aquí -->
-                </div>
-                <button type="button" class="btn btn-outline-primary mt-2" id="add-material">
-                    <i class="bi bi-plus-circle"></i> Agregar Material
-                </button>
-
-                <div class="d-flex justify-content-end mt-4">
-                    <a href="{% url 'produccion:lista' %}" class="btn btn-secondary me-2">
+                <div class="d-flex justify-content-between">
+                    <a href="{% url 'produccion:lista' %}" class="btn btn-secondary">
                         <i class="bi bi-x-circle"></i> Cancelar
                     </a>
                     <button type="submit" class="btn btn-success">
@@ -145,12 +178,14 @@
 <script>
 let materialIndex = 0;
 
-// Template para nuevo material (igual estructura que cotizaciones)
 function crearMaterialHTML(index) {
     return `
         <div class="card mb-3 material-container p-3" data-material-index="${index}">
             <div class="row">
-                <div class="col-md-8 mb-2">
+                <div class="col-md-1 d-flex align-items-center justify-content-center">
+                    <strong class="text-muted">#${index + 1}</strong>
+                </div>
+                <div class="col-md-7 mb-2">
                     <label class="form-label">Nombre del material *</label>
                     <input type="text" name="material_${index}_nombre" class="form-control material-nombre" required>
                 </div>
@@ -159,7 +194,7 @@ function crearMaterialHTML(index) {
                     <input type="number" name="material_${index}_cantidad" class="form-control material-cantidad" min="1" value="1" required>
                 </div>
                 <div class="col-md-1 d-flex align-items-end mb-2">
-                    <button type="button" class="btn btn-sm btn-outline-danger remove-material">
+                    <button type="button" class="btn btn-sm btn-outline-danger remove-material" title="Eliminar material">
                         <i class="bi bi-trash"></i>
                     </button>
                 </div>
@@ -168,51 +203,52 @@ function crearMaterialHTML(index) {
     `;
 }
 
-// Agregar primer material al cargar
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('add-material').click();
 });
 
-// Evento agregar material
 document.getElementById('add-material').addEventListener('click', function() {
     const container = document.getElementById('materiales-container');
     const newMaterial = document.createElement('div');
     newMaterial.innerHTML = crearMaterialHTML(materialIndex);
     container.appendChild(newMaterial.firstElementChild);
     materialIndex++;
-    
-    // Actualizar event listeners
     actualizarEventListeners();
 });
 
-// Actualizar todos los event listeners
 function actualizarEventListeners() {
-    // Eliminar material
     document.querySelectorAll('.remove-material').forEach(btn => {
         btn.replaceWith(btn.cloneNode(true));
     });
     document.querySelectorAll('.remove-material').forEach(btn => {
         btn.addEventListener('click', function() {
             this.closest('.material-container').remove();
-            // No necesita reindexar porque usamos índices simples
         });
     });
 }
 
-// AJAX: Cargar datos desde cotización
 document.getElementById('cargar-cotizacion').addEventListener('click', function() {
     const cotizacionId = document.getElementById('cotizacion-select').value;
+    
     if (!cotizacionId) {
-        alert("Por favor, seleccione una cotización.");
+        alert("⚠️ Por favor, seleccione una cotización primero.");
         return;
     }
     
     const url = "{% url 'produccion:ajax_cargar_cotizacion' 0 %}".replace('0', cotizacionId);
     
+    const btn = this;
+    const btnOriginalText = btn.innerHTML;
+    btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Cargando...';
+    btn.disabled = true;
+    
     fetch(url)
         .then(response => response.json())
         .then(data => {
-            // Llenar campos de cliente
+            if (data.error) {
+                throw new Error(data.error);
+            }
+            
             document.getElementById('id_cliente_nombre').value = data.cliente_nombre || "";
             document.getElementById('id_razon_social').value = data.razon_social || "";
             document.getElementById('id_telefono').value = data.telefono || "";
@@ -221,27 +257,33 @@ document.getElementById('cargar-cotizacion').addEventListener('click', function(
             document.getElementById('id_direccion').value = data.direccion || "";
             document.getElementById('id_cotizacion').value = cotizacionId;
             
-            // Limpiar materiales existentes
             const container = document.getElementById('materiales-container');
             container.innerHTML = '';
             materialIndex = 0;
             
-            // Agregar materiales de la cotización
             if (data.materiales && data.materiales.length > 0) {
-                data.materiales.forEach(material => {
+                data.materiales.forEach((material, index) => {
                     document.getElementById('add-material').click();
-                    const forms = container.querySelectorAll('.material-container');
-                    const lastForm = forms[forms.length - 1];
-                    lastForm.querySelector('.material-nombre').value = material.nombre || "";
-                    lastForm.querySelector('.material-cantidad').value = material.cantidad || 1;
+                    setTimeout(() => {
+                        const forms = container.querySelectorAll('.material-container');
+                        const lastForm = forms[forms.length - 1];
+                        if (lastForm) {
+                            lastForm.querySelector('.material-nombre').value = material.nombre || "";
+                            lastForm.querySelector('.material-cantidad').value = material.cantidad || 1;
+                        }
+                    }, 100);
                 });
             }
             
-            alert("Datos de la cotización cargados correctamente.");
+            alert("✅ Datos de la cotización cargados correctamente.");
         })
         .catch(error => {
             console.error("Error:", error);
-            alert("Error al cargar los datos de la cotización.");
+            alert("❌ Error al cargar los datos: " + error.message);
+        })
+        .finally(() => {
+            btn.innerHTML = btnOriginalText;
+            btn.disabled = false;
         });
 });
 </script>

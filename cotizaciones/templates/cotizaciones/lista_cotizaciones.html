@@ -22,6 +22,25 @@
   {% endfor %} 
   {% endif %}
 
+  <!-- Filtros y Búsqueda -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-8">
+          <input type="text" class="form-control" placeholder="Buscar por número, cliente..." id="search-input-cot">
+        </div>
+        <div class="col-md-4">
+          <select class="form-select" id="status-filter-cot">
+            <option value="">Todos los estados</option>
+            <option value="aprobada">Aprobada</option>
+            <option value="rechazada">Rechazada</option>
+            <option value="pendiente">Pendiente</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="card shadow-lg">
     <div class="card-header bg-light">
       <h6 class="mb-0">Listado de Cotizaciones</h6>
@@ -29,7 +48,7 @@
     <div class="card-body">
       {% if cotizaciones %}
       <div class="table-responsive">
-        <table class="table table-striped table-hover">
+        <table class="table table-striped table-hover" id="cotizaciones-table">
           <thead>
             <tr>
               <th>Número</th>
@@ -149,4 +168,35 @@
   </nav>
   {% endif %}
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Filtro para cotizaciones
+    const statusFilter = document.getElementById('status-filter-cot');
+    const searchInput = document.getElementById('search-input-cot');
+    const tableRows = document.querySelectorAll('#cotizaciones-table tbody tr');
+
+    function filterTable() {
+        const statusValue = statusFilter.value.toLowerCase();
+        const searchValue = searchInput.value.toLowerCase();
+
+        tableRows.forEach(row => {
+            const statusCell = row.querySelector('td:nth-child(5)');
+            const numberCell = row.querySelector('td:nth-child(1)');
+            const clientCell = row.querySelector('td:nth-child(2)');
+            
+            const statusMatch = !statusValue || statusCell.textContent.toLowerCase().includes(statusValue);
+            const searchMatch = !searchValue || 
+                               numberCell.textContent.toLowerCase().includes(searchValue) ||
+                               clientCell.textContent.toLowerCase().includes(searchValue);
+
+            row.style.display = statusMatch && searchMatch ? '' : 'none';
+        });
+    }
+
+    statusFilter.addEventListener('change', filterTable);
+    searchInput.addEventListener('input', filterTable);
+});
+</script>
+
 {% endblock %}
