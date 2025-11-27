@@ -2687,3 +2687,16 @@ Watching for file changes with StatReloader
 "GET /dashboard/ HTTP/1.1" 200 11052
 "GET /cotizaciones/ HTTP/1.1" 200 15329
 "GET /diseno/nuevo/ HTTP/1.1" 200 15406
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 2066
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 2066
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 11052
+"GET /cotizaciones/crear/ HTTP/1.1" 200 25710
+"GET /cotizaciones/ HTTP/1.1" 200 13133
+Watching for file changes with StatReloader
