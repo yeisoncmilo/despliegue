@@ -585,3 +585,2105 @@ Not Found: /favicon.ico
 "GET /cotizaciones/pdf/4/ HTTP/1.1" 200 3277
 "GET /cotizaciones/pdf/4/ HTTP/1.1" 200 3277
 "GET /cotizaciones/4/editar/ HTTP/1.1" 200 32649
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 7314
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 58433)
+"GET /cotizaciones/crear/ HTTP/1.1" 200 22329
+"GET /produccion/crear/ HTTP/1.1" 200 22245
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 7334
+"GET /ventas/crear/ HTTP/1.1" 200 24286
+"GET /ventas/ HTTP/1.1" 200 10856
+"GET /ventas/crear/ HTTP/1.1" 200 24286
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 7334
+"GET /ventas/crear/ HTTP/1.1" 200 638
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\ventas\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\ventas\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\ventas\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\ventas\forms.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 7334
+"GET /ventas/crear/ HTTP/1.1" 200 24286
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 51741)
+"GET /ventas/ HTTP/1.1" 200 10856
+"GET /ventas/crear/ HTTP/1.1" 200 24286
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 51813)
+"POST /ventas/crear/ HTTP/1.1" 302 0
+Internal Server Error: /ventas/1/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\ventas\views.py", line 131, in detalle_venta
+    return render(request, 'ventas/detalle_venta.html', {
+        'venta': venta,
+    ...<3 lines>...
+        'total': venta.total,
+    })
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: ventas/detalle_venta.html
+"GET /ventas/1/ HTTP/1.1" 500 92476
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 7334
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 63054)
+"GET /ventas/crear/ HTTP/1.1" 200 24286
+"GET /ventas/ HTTP/1.1" 200 12719
+Internal Server Error: /ventas/1/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\ventas\views.py", line 131, in detalle_venta
+    return render(request, 'ventas/detalle_venta.html', {
+        'venta': venta,
+    ...<3 lines>...
+        'total': venta.total,
+    })
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: ventas/detalle_venta.html
+"GET /ventas/1/ HTTP/1.1" 500 92192
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 63080)
+"GET /dashboard/ HTTP/1.1" 200 7334
+"GET /ventas/crear/ HTTP/1.1" 200 23645
+"GET /ventas/ HTTP/1.1" 200 12482
+Internal Server Error: /ventas/1/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\ventas\views.py", line 131, in detalle_venta
+    return render(request, 'ventas/detalle_venta.html', {
+        'venta': venta,
+    ...<3 lines>...
+        'total': venta.total,
+    })
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: ventas/detalle_venta.html
+"GET /ventas/1/ HTTP/1.1" 500 92192
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 7334
+"GET /ventas/ HTTP/1.1" 200 12482
+Internal Server Error: /ventas/1/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\ventas\views.py", line 131, in detalle_venta
+    return render(request, 'ventas/detalle_venta.html', {
+        'venta': venta,
+    ...<3 lines>...
+        'total': venta.total,
+    })
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: ventas/detalle_venta.html
+"GET /ventas/1/ HTTP/1.1" 500 92192
+"GET /ventas/1/editar/ HTTP/1.1" 302 0
+Internal Server Error: /ventas/1/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\ventas\views.py", line 131, in detalle_venta
+    return render(request, 'ventas/detalle_venta.html', {
+        'venta': venta,
+    ...<3 lines>...
+        'total': venta.total,
+    })
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: ventas/detalle_venta.html
+"GET /ventas/1/ HTTP/1.1" 500 92470
+"GET /produccion/crear/ HTTP/1.1" 200 22265
+"GET /produccion/ HTTP/1.1" 200 13133
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\ventas\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\ventas\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\ventas\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\ventas\forms.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 7334
+"GET /ventas/ HTTP/1.1" 200 12501
+Internal Server Error: /ventas/1/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\ventas\views.py", line 131, in detalle_venta
+    return render(request, 'ventas/detalle_venta.html', {
+        'venta': venta,
+    ...<3 lines>...
+        'total': venta.total,
+    })
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: ventas/detalle_venta.html
+"GET /ventas/1/ HTTP/1.1" 500 92192
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 7334
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 50369)
+Internal Server Error: /ventas/crear/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\ventas\views.py", line 129, in crear_venta
+    return render(request, 'ventas/nueva_venta.html', context)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\defaulttags.py", line 862, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 489, in parse
+    raise self.error(token, e)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 487, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 609, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 705, in __init__
+    filter_func = parser.find_filter(filter_name)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 615, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Invalid filter: 'intcomma'
+"GET /ventas/crear/ HTTP/1.1" 500 291575
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 7334
+"GET /diseno/nuevo/ HTTP/1.1" 200 12463
+Internal Server Error: /ventas/crear/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\ventas\views.py", line 129, in crear_venta
+    return render(request, 'ventas/nueva_venta.html', context)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\defaulttags.py", line 862, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 489, in parse
+    raise self.error(token, e)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 487, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 609, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 705, in __init__
+    filter_func = parser.find_filter(filter_name)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 615, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Invalid filter: 'intcomma'
+"GET /ventas/crear/ HTTP/1.1" 500 291578
+"GET /ventas/crear/ HTTP/1.1" 200 29251
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 54964)
+"GET /cotizaciones/crear/ HTTP/1.1" 200 22349
+"GET /cotizaciones/ HTTP/1.1" 200 18572
+"GET /ventas/crear/ HTTP/1.1" 200 29251
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 7334
+"GET /ventas/crear/ HTTP/1.1" 200 29251
+"GET /ventas/ HTTP/1.1" 200 12501
+Internal Server Error: /ventas/1/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\ventas\views.py", line 135, in detalle_venta
+    return render(request, 'ventas/detalle_venta.html', {
+        'venta': venta,
+    ...<3 lines>...
+        'total': venta.total,
+    })
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: ventas/detalle_venta.html
+"GET /ventas/1/ HTTP/1.1" 500 92192
+"GET /ventas/1/editar/ HTTP/1.1" 302 0
+Internal Server Error: /ventas/1/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\ventas\views.py", line 135, in detalle_venta
+    return render(request, 'ventas/detalle_venta.html', {
+        'venta': venta,
+    ...<3 lines>...
+        'total': venta.total,
+    })
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: ventas/detalle_venta.html
+"GET /ventas/1/ HTTP/1.1" 500 92470
+"GET /ventas/crear/ HTTP/1.1" 200 29251
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 7334
+"GET /ventas/crear/ HTTP/1.1" 200 29266
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 7334
+"GET /ventas/crear/ HTTP/1.1" 200 29266
+"GET /cotizaciones/ HTTP/1.1" 200 18801
+"GET /cotizaciones/4/editar/ HTTP/1.1" 200 32669
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\cotizaciones\forms.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\cotizaciones\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\cotizaciones\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 7334
+"GET /cotizaciones/ HTTP/1.1" 200 18572
+"GET /cotizaciones/4/ HTTP/1.1" 200 15004
+"GET /cotizaciones/4/editar/ HTTP/1.1" 200 32669
+"GET /cotizaciones/crear/ HTTP/1.1" 200 22349
+"GET /cotizaciones/ HTTP/1.1" 200 18572
+"GET /cotizaciones/4/editar/ HTTP/1.1" 200 32669
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\cotizaciones\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\cotizaciones\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 7334
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 61668)
+"GET /cotizaciones/crear/ HTTP/1.1" 200 22766
+"GET /cotizaciones/ HTTP/1.1" 200 18572
+"GET /cotizaciones/4/editar/ HTTP/1.1" 200 33038
+"POST /cotizaciones/4/editar/ HTTP/1.1" 302 0
+"GET /cotizaciones/4/ HTTP/1.1" 200 15003
+"GET /cotizaciones/4/editar/ HTTP/1.1" 200 33038
+"POST /cotizaciones/4/editar/ HTTP/1.1" 302 0
+"GET /cotizaciones/4/ HTTP/1.1" 200 15003
+"GET /ventas/crear/ HTTP/1.1" 200 29403
+"GET /ventas/ajax/cargar-cotizacion/4/ HTTP/1.1" 200 728
+"POST /ventas/crear/ HTTP/1.1" 302 0
+Internal Server Error: /ventas/2/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\ventas\views.py", line 135, in detalle_venta
+    return render(request, 'ventas/detalle_venta.html', {
+        'venta': venta,
+    ...<3 lines>...
+        'total': venta.total,
+    })
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: ventas/detalle_venta.html
+"GET /ventas/2/ HTTP/1.1" 500 91589
+"GET /ventas/2/ HTTP/1.1" 200 15132
+"GET /ventas/2/editar/ HTTP/1.1" 200 34303
+"POST /ventas/2/editar/ HTTP/1.1" 302 0
+"GET /ventas/2/ HTTP/1.1" 200 15137
+Internal Server Error: /ventas/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\ventas\views.py", line 19, in lista_ventas
+    return render(request, 'ventas/lista_ventas.html', {'ventas': ventas})
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: ventas/lista_ventas.html
+"GET /ventas/ HTTP/1.1" 500 91083
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 59880)
+"GET /ventas/2/editar/ HTTP/1.1" 302 0
+"GET /ventas/2/ HTTP/1.1" 200 15137
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 60442)
+"GET /ventas/2/editar/ HTTP/1.1" 302 0
+"GET /ventas/2/ HTTP/1.1" 200 15137
+"GET /ventas/2/editar/ HTTP/1.1" 302 0
+"GET /ventas/2/ HTTP/1.1" 200 15137
+"GET /ventas/2/editar/ HTTP/1.1" 302 0
+"GET /ventas/2/ HTTP/1.1" 200 15137
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 60466)
+Internal Server Error: /ventas/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\ventas\views.py", line 19, in lista_ventas
+    return render(request, 'ventas/lista_ventas.html', {'ventas': ventas})
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: ventas/lista_ventas.html
+"GET /ventas/ HTTP/1.1" 500 91122
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 7334
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 60815)
+"GET /ventas/ HTTP/1.1" 200 15708
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 60836)
+"GET /ventas/1/ HTTP/1.1" 200 13254
+"GET /ventas/1/editar/ HTTP/1.1" 302 0
+"GET /ventas/1/ HTTP/1.1" 200 13254
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 61043)
+"GET /ventas/1/editar/ HTTP/1.1" 302 0
+"GET /ventas/1/ HTTP/1.1" 200 13254
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 61109)
+"GET /ventas/1/editar/ HTTP/1.1" 302 0
+"GET /ventas/1/ HTTP/1.1" 200 13254
+"GET /ventas/1/editar/ HTTP/1.1" 302 0
+"GET /ventas/1/ HTTP/1.1" 200 13254
+"GET /ventas/1/editar/ HTTP/1.1" 302 0
+"GET /ventas/1/ HTTP/1.1" 200 13254
+"GET /ventas/1/editar/ HTTP/1.1" 302 0
+"GET /ventas/1/ HTTP/1.1" 200 13254
+"GET /ventas/ HTTP/1.1" 200 15250
+"GET /ventas/1/editar/ HTTP/1.1" 302 0
+"GET /ventas/1/ HTTP/1.1" 200 13254
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 61117)
+"GET /ventas/1/editar/ HTTP/1.1" 302 0
+"GET /ventas/1/ HTTP/1.1" 200 13254
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 61308)
+"GET /ventas/1/editar/ HTTP/1.1" 302 0
+"GET /ventas/1/ HTTP/1.1" 200 13254
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 7334
+"GET /cotizaciones/crear/ HTTP/1.1" 200 22766
+"GET /ventas/crear/ HTTP/1.1" 200 29560
+"GET /ventas/ HTTP/1.1" 200 14637
+"GET /ventas/1/editar/ HTTP/1.1" 302 0
+Internal Server Error: /ventas/1/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\ventas\views.py", line 176, in detalle_venta
+    return render(request, 'ventas/detalle_venta.html', {
+        'venta': venta,
+    ...<3 lines>...
+        'total': venta.total,
+    })
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 523, in parse
+    self.unclosed_block_tag(parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 590, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 4: 'block'. Looking for one of: endblock.
+"GET /ventas/1/ HTTP/1.1" 500 177528
+Internal Server Error: /ventas/1/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\ventas\views.py", line 176, in detalle_venta
+    return render(request, 'ventas/detalle_venta.html', {
+        'venta': venta,
+    ...<3 lines>...
+        'total': venta.total,
+    })
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 523, in parse
+    self.unclosed_block_tag(parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 590, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 4: 'block'. Looking for one of: endblock.
+"GET /ventas/1/ HTTP/1.1" 500 177528
+"GET /ventas/1/ HTTP/1.1" 200 13254
+"GET /ventas/1/editar/ HTTP/1.1" 302 0
+"GET /ventas/1/ HTTP/1.1" 200 13254
+"GET /ventas/1/editar/ HTTP/1.1" 302 0
+"GET /ventas/1/ HTTP/1.1" 200 13254
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\ventas\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\ventas\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\ventas\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\ventas\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\ventas\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\ventas\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\ventas\forms.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 7334
+"GET /ventas/ HTTP/1.1" 200 14637
+"GET /ventas/1/editar/ HTTP/1.1" 302 0
+"GET /ventas/1/ HTTP/1.1" 200 13254
+"GET /ventas/1/editar/ HTTP/1.1" 302 0
+"GET /ventas/1/ HTTP/1.1" 200 13254
+"GET /ventas/1/editar/ HTTP/1.1" 302 0
+"GET /ventas/1/ HTTP/1.1" 200 13254
+"GET /ventas/ HTTP/1.1" 200 14637
+"GET /ventas/ HTTP/1.1" 200 14001
+"GET /ventas/crear/ HTTP/1.1" 200 29403
+"GET /ventas/ajax/cargar-cotizacion/4/ HTTP/1.1" 200 728
+"POST /ventas/crear/ HTTP/1.1" 302 0
+"GET /ventas/3/ HTTP/1.1" 200 13388
+"GET /ventas/3/editar/ HTTP/1.1" 200 27331
+"GET /ventas/3/ HTTP/1.1" 200 13388
+"GET /ventas/3/pdf/ HTTP/1.1" 200 2773
+"GET /ventas/ HTTP/1.1" 200 15714
+"GET /ventas/1/editar/ HTTP/1.1" 302 0
+"GET /ventas/1/ HTTP/1.1" 200 13254
+"GET /ventas/ HTTP/1.1" 200 15712
+"GET /ventas/2/editar/ HTTP/1.1" 302 0
+"GET /ventas/2/ HTTP/1.1" 200 15137
+"GET /ventas/2/editar/ HTTP/1.1" 302 0
+"GET /ventas/2/ HTTP/1.1" 200 15137
+"GET /ventas/2/editar/ HTTP/1.1" 302 0
+"GET /ventas/2/ HTTP/1.1" 200 15137
+"GET /ventas/ HTTP/1.1" 200 16132
+"GET /dashboard/ HTTP/1.1" 200 7334
+"GET /dashboard/ HTTP/1.1" 200 7334
+"GET /cotizaciones/crear/ HTTP/1.1" 200 22766
+"GET /cotizaciones/ HTTP/1.1" 200 18571
+"GET /cotizaciones/4/editar/ HTTP/1.1" 200 33038
+Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\autenticacion\views.py", line 41, in dashboard
+    return render(request, 'autenticacion/dashboard.html')
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader_tags.py", line 228, in do_block
+    raise TemplateSyntaxError(
+        "'%s' tag with name '%s' appears more than once" % (bits[0], block_name)
+    )
+django.template.exceptions.TemplateSyntaxError: 'block' tag with name 'content' appears more than once
+"GET /dashboard/ HTTP/1.1" 500 165494
+"GET /ventas/ HTTP/1.1" 200 15496
+"GET /dashboard/ HTTP/1.1" 200 7334
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 53262)
+"GET /admin/ HTTP/1.1" 200 6890
+"GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+"GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+"GET /static/admin/css/base.css HTTP/1.1" 200 22120
+"GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+"GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+"GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+"GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+"GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+"GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+"GET /ventas/crear/ HTTP/1.1" 200 29403
+"GET /ventas/ HTTP/1.1" 200 15496
+"GET /ventas/crear/ HTTP/1.1" 200 29403
+"GET /produccion/crear/ HTTP/1.1" 200 22265
+"GET /dashboard/ HTTP/1.1" 200 7334
+"GET /dashboard/ HTTP/1.1" 200 7334
+"GET /dashboard/ HTTP/1.1" 200 11304
+"GET /static/img/logo.png HTTP/1.1" 404 1850
+"GET /cotizaciones/ HTTP/1.1" 200 18542
+"GET /dashboard/ HTTP/1.1" 200 11304
+"GET /static/img/logo.png HTTP/1.1" 404 1850
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 62853)
+"GET /produccion/ HTTP/1.1" 200 12870
+"GET /dashboard/ HTTP/1.1" 200 11304
+"GET /static/img/logo.png HTTP/1.1" 404 1850
+"GET /diseno/ HTTP/1.1" 200 9875
+"GET /dashboard/ HTTP/1.1" 200 11304
+"GET /static/img/logo.png HTTP/1.1" 404 1850
+"GET /dashboard/ HTTP/1.1" 200 11304
+"GET /static/img/logo.png HTTP/1.1" 404 1850
+"GET /dashboard/ HTTP/1.1" 200 11304
+"GET /static/img/logo.png HTTP/1.1" 404 1850
+"GET /cotizaciones/crear/ HTTP/1.1" 200 22737
+"GET /dashboard/ HTTP/1.1" 200 11304
+"GET /static/img/logo.png HTTP/1.1" 404 1850
+"GET /ventas/ HTTP/1.1" 200 15467
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 63648)
+"GET /dashboard/ HTTP/1.1" 200 11304
+"GET /static/img/logo.png HTTP/1.1" 404 1850
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 63703)
+"GET /cotizaciones/crear/ HTTP/1.1" 200 22737
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 63834)
+"GET /produccion/crear/ HTTP/1.1" 200 22236
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 63868)
+"GET /diseno/nuevo/ HTTP/1.1" 200 12434
+"GET /ventas/crear/ HTTP/1.1" 200 29374
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 63890)
+"GET /dashboard/ HTTP/1.1" 200 11304
+"GET /static/img/logo.png HTTP/1.1" 404 1850
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\autenticacion\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\autenticacion\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 302 0
+Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\autenticacion\views.py", line 52, in dashboard
+    'total_cotizaciones': Cotizacion.objects.count(),
+                          ^^^^^^^^^^
+NameError: name 'Cotizacion' is not defined
+"GET /dashboard/ HTTP/1.1" 500 73024
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 56286)
+Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\autenticacion\views.py", line 52, in dashboard
+    'total_cotizaciones': Cotizacion.objects.count(),
+                          ^^^^^^^^^^
+NameError: name 'Cotizacion' is not defined
+"GET /dashboard/ HTTP/1.1" 500 73024
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 56319)
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\autenticacion\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\autenticacion\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\autenticacion\forms.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 302 0
+Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\autenticacion\views.py", line 52, in dashboard
+    'total_cotizaciones': Cotizacion.objects.count(),
+                          ^^^^^^^^^^
+NameError: name 'Cotizacion' is not defined
+"GET /dashboard/ HTTP/1.1" 500 73024
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 63997)
+Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\autenticacion\views.py", line 52, in dashboard
+    'total_cotizaciones': Cotizacion.objects.count(),
+                          ^^^^^^^^^^
+NameError: name 'Cotizacion' is not defined
+"GET /dashboard/ HTTP/1.1" 500 73024
+Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\autenticacion\views.py", line 52, in dashboard
+    'total_cotizaciones': Cotizacion.objects.count(),
+                          ^^^^^^^^^^
+NameError: name 'Cotizacion' is not defined
+"GET /dashboard/ HTTP/1.1" 500 73024
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 64024)
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\autenticacion\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /dashboard/ HTTP/1.1" 200 7334
+"GET /cotizaciones/crear/ HTTP/1.1" 200 22766
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 64777)
+"GET /produccion/crear/ HTTP/1.1" 200 22265
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 58917)
+"GET /diseno/nuevo/ HTTP/1.1" 200 12463
+"GET /ventas/crear/ HTTP/1.1" 200 29403
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 58944)
+"GET /dashboard/ HTTP/1.1" 200 7334
+"GET /dashboard/ HTTP/1.1" 200 7334
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 244, in _get_session
+    return self._session_cache
+           ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\backends\mysql\base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+    ~~~~~~~~~~^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+    ~~~~~~~~~~~^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'base.django_session' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\autenticacion\views.py", line 9, in vista_login
+    if request.user.is_authenticated:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\utils\functional.py", line 251, in inner
+    self._setup()
+    ~~~~~~~~~~~^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\utils\functional.py", line 404, in _setup
+    self._wrapped = self._setupfunc()
+                    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\middleware.py", line 40, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+                                            ~~~~~~~~^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\middleware.py", line 20, in get_user
+    request._cached_user = auth.get_user(request)
+                           ~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\__init__.py", line 304, in get_user
+    user_id = _get_user_session_key(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\__init__.py", line 95, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+                                               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 55, in __getitem__
+    return self._session[key]
+           ^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 249, in _get_session
+    self._session_cache = self.load()
+                          ~~~~~~~~~^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\sessions\backends\db.py", line 55, in load
+    s = self._get_session_from_db()
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\sessions\backends\db.py", line 34, in _get_session_from_db
+    return self.model.objects.get(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        session_key=self.session_key, expire_date__gt=timezone.now()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\models\query.py", line 631, in get
+    num = len(clone)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\models\query.py", line 368, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\models\query.py", line 1954, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\models\query.py", line 93, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\backends\mysql\base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+    ~~~~~~~~~~^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+    ~~~~~~~~~~~^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.ProgrammingError: (1146, "Table 'base.django_session' doesn't exist")
+"GET /login/ HTTP/1.1" 500 251831
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 244, in _get_session
+    return self._session_cache
+           ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\backends\mysql\base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+    ~~~~~~~~~~^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+    ~~~~~~~~~~~^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'base.django_session' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\autenticacion\views.py", line 11, in vista_login
+    if request.user.is_authenticated:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\utils\functional.py", line 251, in inner
+    self._setup()
+    ~~~~~~~~~~~^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\utils\functional.py", line 404, in _setup
+    self._wrapped = self._setupfunc()
+                    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\middleware.py", line 40, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+                                            ~~~~~~~~^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\middleware.py", line 20, in get_user
+    request._cached_user = auth.get_user(request)
+                           ~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\__init__.py", line 304, in get_user
+    user_id = _get_user_session_key(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\__init__.py", line 95, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+                                               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 55, in __getitem__
+    return self._session[key]
+           ^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 249, in _get_session
+    self._session_cache = self.load()
+                          ~~~~~~~~~^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\sessions\backends\db.py", line 55, in load
+    s = self._get_session_from_db()
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\sessions\backends\db.py", line 34, in _get_session_from_db
+    return self.model.objects.get(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        session_key=self.session_key, expire_date__gt=timezone.now()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\models\query.py", line 631, in get
+    num = len(clone)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\models\query.py", line 368, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\models\query.py", line 1954, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\models\query.py", line 93, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\backends\mysql\base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+    ~~~~~~~~~~^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+    ~~~~~~~~~~~^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.ProgrammingError: (1146, "Table 'base.django_session' doesn't exist")
+"GET /login/ HTTP/1.1" 500 251808
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 50324)
+Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 244, in _get_session
+    return self._session_cache
+           ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\backends\mysql\base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+    ~~~~~~~~~~^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+    ~~~~~~~~~~~^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'base.django_session' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\autenticacion\views.py", line 11, in vista_login
+    if request.user.is_authenticated:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\utils\functional.py", line 251, in inner
+    self._setup()
+    ~~~~~~~~~~~^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\utils\functional.py", line 404, in _setup
+    self._wrapped = self._setupfunc()
+                    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\middleware.py", line 40, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+                                            ~~~~~~~~^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\middleware.py", line 20, in get_user
+    request._cached_user = auth.get_user(request)
+                           ~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\__init__.py", line 304, in get_user
+    user_id = _get_user_session_key(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\__init__.py", line 95, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+                                               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 55, in __getitem__
+    return self._session[key]
+           ^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 249, in _get_session
+    self._session_cache = self.load()
+                          ~~~~~~~~~^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\sessions\backends\db.py", line 55, in load
+    s = self._get_session_from_db()
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\sessions\backends\db.py", line 34, in _get_session_from_db
+    return self.model.objects.get(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        session_key=self.session_key, expire_date__gt=timezone.now()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\models\query.py", line 631, in get
+    num = len(clone)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\models\query.py", line 368, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\models\query.py", line 1954, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\models\query.py", line 93, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\db\backends\mysql\base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+    ~~~~~~~~~~^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+    ~~~~~~~~~~~^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.ProgrammingError: (1146, "Table 'base.django_session' doesn't exist")
+"GET /login/ HTTP/1.1" 500 251806
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 2066
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3643
+"POST /login/ HTTP/1.1" 200 2224
+"POST /login/ HTTP/1.1" 200 2232
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 2066
+"POST /login/ HTTP/1.1" 200 2224
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 2066
+"POST /login/ HTTP/1.1" 302 0
+Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\autenticacion\views.py", line 43, in dashboard
+    return render(request, 'autenticacion/dashboard.html')
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'busqueda_global' not found. 'busqueda_global' is not a valid view function or pattern name.
+"GET /dashboard/ HTTP/1.1" 500 128894
+Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\autenticacion\views.py", line 43, in dashboard
+    return render(request, 'autenticacion/dashboard.html')
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'busqueda_global' not found. 'busqueda_global' is not a valid view function or pattern name.
+"GET /dashboard/ HTTP/1.1" 500 128628
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\sistema\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\sistema\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\sistema\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\sistema\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\sistema\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\sistema\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\sistema\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\sistema\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\sistema\urls.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 11788
+"GET /cotizaciones/crear/ HTTP/1.1" 200 26446
+"GET /dashboard/ HTTP/1.1" 200 11788
+Internal Server Error: /perfil/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\autenticacion\views.py", line 128, in perfil_usuario
+    return render(request, 'autenticacion/perfil.html', {'usuario': usuario})
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: autenticacion/perfil.html
+"GET /perfil/ HTTP/1.1" 500 93109
+Internal Server Error: /cambiar-contrasena/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\autenticacion\views.py", line 145, in cambiar_contrasena
+    return render(request, 'autenticacion/cambiar_contrasena.html', {'form': form})
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: autenticacion/cambiar_contrasena.html
+"GET /cambiar-contrasena/ HTTP/1.1" 500 93475
+"GET /produccion/crear/ HTTP/1.1" 200 25124
+"GET /ventas/crear/ HTTP/1.1" 200 32945
+"GET /dashboard/ HTTP/1.1" 200 11788
+"GET /admin/ HTTP/1.1" 200 8049
+"GET /static/admin/css/base.css HTTP/1.1" 200 22120
+"GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+"GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+"GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+"GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+"GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+"GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+"GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+"GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+"GET /admin/autenticacion/usuariopersonalizado/add/ HTTP/1.1" 200 13901
+"GET /static/admin/js/core.js HTTP/1.1" 200 6208
+"GET /static/admin/css/forms.css HTTP/1.1" 200 8525
+"GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+"GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+"GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+"GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+"GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+"GET /static/admin/css/unusable_password_field.css HTTP/1.1" 200 663
+"GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+"GET /static/admin/js/unusable_password_field.js HTTP/1.1" 200 1480
+"GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+"GET /static/admin/css/widgets.css HTTP/1.1" 200 11973
+"GET /admin/jsi18n/ HTTP/1.1" 200 9662
+"GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+"GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 56808)
+"POST /admin/autenticacion/usuariopersonalizado/add/ HTTP/1.1" 302 0
+"GET /admin/autenticacion/usuariopersonalizado/2/change/ HTTP/1.1" 200 29889
+"GET /static/admin/js/SelectBox.js HTTP/1.1" 200 4530
+"GET /static/admin/js/calendar.js HTTP/1.1" 200 9141
+"GET /static/admin/js/SelectFilter2.js HTTP/1.1" 200 15845
+"GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+"GET /admin/jsi18n/ HTTP/1.1" 200 9662
+"GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+"GET /static/admin/img/selector-icons.svg HTTP/1.1" 200 3291
+"GET /static/admin/img/search.svg HTTP/1.1" 200 458
+"GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+"GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 56807)
+"GET /admin/authtoken/tokenproxy/add/ HTTP/1.1" 200 11159
+"GET /admin/jsi18n/ HTTP/1.1" 200 9662
+"GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 56809)
+"GET /admin/autenticacion/usuariopersonalizado/2/change/?_to_field=id HTTP/1.1" 200 29649
+"GET /admin/jsi18n/ HTTP/1.1" 200 9662
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 56811)
+"GET /admin/authtoken/tokenproxy/add/ HTTP/1.1" 200 11159
+"GET /admin/jsi18n/ HTTP/1.1" 200 9662
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 56810)
+"GET /admin/autenticacion/usuariopersonalizado/2/change/?_to_field=id&_popup=1 HTTP/1.1" 200 23787
+"GET /admin/jsi18n/ HTTP/1.1" 200 9662
+"POST /admin/autenticacion/usuariopersonalizado/2/change/?_to_field=id&_popup=1 HTTP/1.1" 200 433
+"GET /static/admin/js/popup_response.js HTTP/1.1" 200 532
+"POST /admin/authtoken/tokenproxy/add/ HTTP/1.1" 302 0
+"GET /admin/authtoken/tokenproxy/ HTTP/1.1" 200 10850
+"GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+"GET /static/admin/js/filters.js HTTP/1.1" 200 978
+"GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+"GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 57779)
+"POST /admin/logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 2066
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 11821
+"GET /dashboard/ HTTP/1.1" 200 11821
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 57778)
+"GET /cotizaciones/crear/ HTTP/1.1" 200 26463
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 56141)
+"GET /cotizaciones/ HTTP/1.1" 200 13886
+"GET /dashboard/ HTTP/1.1" 200 11821
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 59747)
+Not Found: /api-auth-token/
+"GET /api-auth-token/ HTTP/1.1" 404 4511
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 4499
+Watching for file changes with StatReloader
+Unauthorized: /api/cotizaciones/
+"GET /api/cotizaciones/ HTTP/1.1" 401 9975
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3426
+"GET /static/rest_framework/css/default.css HTTP/1.1" 200 1152
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121457
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+"GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+"GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 39680
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 200 87533
+Unauthorized: /api/cotizaciones/
+"GET /api/cotizaciones/ HTTP/1.1" 401 9975
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 63381)
+Unauthorized: /api/
+"GET /api/ HTTP/1.1" 401 9765
+Unauthorized: /api/
+"GET /api/ HTTP/1.1" 401 9765
+- Broken pipe from ('127.0.0.1', 63145)
+Unauthorized: /api/
+"GET /api/?format=json HTTP/1.1" 401 65
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 4499
+Unauthorized: /api/
+"GET /api/?format=api HTTP/1.1" 401 9798
+Unauthorized: /api/
+"GET /api/?format=api HTTP/1.1" 401 9798
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 63148)
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 3752
+"GET /static/admin/css/login.css HTTP/1.1" 200 951
+"POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 9240
+"GET /admin/autenticacion/usuariopersonalizado/add/ HTTP/1.1" 200 13901
+- Broken pipe from ('127.0.0.1', 63636)
+- Broken pipe from ('127.0.0.1', 63637)
+- Broken pipe from ('127.0.0.1', 63638)
+"GET /admin/jsi18n/ HTTP/1.1" 200 9662
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 63386)
+"POST /admin/autenticacion/usuariopersonalizado/add/ HTTP/1.1" 200 14206
+"GET /admin/jsi18n/ HTTP/1.1" 200 9662
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 63837)
+"POST /admin/autenticacion/usuariopersonalizado/add/ HTTP/1.1" 200 14167
+"GET /admin/jsi18n/ HTTP/1.1" 200 9662
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 64177)
+"POST /admin/autenticacion/usuariopersonalizado/add/ HTTP/1.1" 302 0
+"GET /admin/autenticacion/usuariopersonalizado/4/change/ HTTP/1.1" 200 29889
+- Broken pipe from ('127.0.0.1', 64458)
+"GET /admin/jsi18n/ HTTP/1.1" 200 9662
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 64457)
+"POST /admin/autenticacion/usuariopersonalizado/4/change/ HTTP/1.1" 302 0
+"GET /admin/autenticacion/usuariopersonalizado/ HTTP/1.1" 200 14628
+"GET /admin/jsi18n/ HTTP/1.1" 200 9662
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 64826)
+"GET /admin/authtoken/tokenproxy/ HTTP/1.1" 200 10865
+"GET /admin/authtoken/tokenproxy/add/ HTTP/1.1" 200 11252
+"GET /admin/jsi18n/ HTTP/1.1" 200 9662
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 65240)
+"POST /admin/authtoken/tokenproxy/add/ HTTP/1.1" 302 0
+"GET /admin/authtoken/tokenproxy/ HTTP/1.1" 200 11360
+"POST /admin/logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 2066
+"POST /login/ HTTP/1.1" 200 2461
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 8941
+Unauthorized: /api/cotizaciones/
+"GET /api/cotizaciones/?estado=aprobada HTTP/1.1" 401 10047
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+"GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+"GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+"GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 58343)
+Unauthorized: /api/cotizaciones/
+"GET /api/cotizaciones/?estado=aprobada HTTP/1.1" 401 10047
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 58346)
+Unauthorized: /api/cotizaciones/
+"GET /api/cotizaciones/?estado=aprobada&format=json HTTP/1.1" 401 65
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 4499
+Internal Server Error: /busqueda/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\autenticacion\views.py", line 106, in busqueda_global
+    return render(request, 'autenticacion/resultados_busqueda.html', {
+        'query': query,
+        'resultados': resultados
+    })
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: autenticacion/resultados_busqueda.html
+"GET /busqueda/?q= HTTP/1.1" 500 94086
+Internal Server Error: /busqueda/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\autenticacion\views.py", line 106, in busqueda_global
+    return render(request, 'autenticacion/resultados_busqueda.html', {
+        'query': query,
+        'resultados': resultados
+    })
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: autenticacion/resultados_busqueda.html
+"GET /busqueda/?q= HTTP/1.1" 500 94086
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 63833)
+Internal Server Error: /perfil/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\autenticacion\views.py", line 128, in perfil_usuario
+    return render(request, 'autenticacion/perfil.html', {'usuario': usuario})
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: autenticacion/perfil.html
+"GET /perfil/ HTTP/1.1" 500 93085
+"GET /perfil/ HTTP/1.1" 200 9259
+"POST /perfil/ HTTP/1.1" 302 0
+"GET /perfil/ HTTP/1.1" 200 9521
+"POST /perfil/ HTTP/1.1" 302 0
+"GET /perfil/ HTTP/1.1" 200 9519
+"POST /perfil/ HTTP/1.1" 302 0
+"GET /perfil/ HTTP/1.1" 200 9519
+"POST /perfil/ HTTP/1.1" 302 0
+"GET /perfil/ HTTP/1.1" 200 9519
+"POST /perfil/ HTTP/1.1" 302 0
+"GET /perfil/ HTTP/1.1" 200 9519
+"POST /perfil/ HTTP/1.1" 302 0
+"GET /perfil/ HTTP/1.1" 200 9519
+"GET /perfil/ HTTP/1.1" 200 9257
+Internal Server Error: /configuracion/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\autenticacion\views.py", line 150, in configuracion
+    return render(request, 'autenticacion/configuracion.html')
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: autenticacion/configuracion.html
+"GET /configuracion/ HTTP/1.1" 500 91739
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 58901)
+"GET /configuracion/ HTTP/1.1" 200 9220
+Internal Server Error: /cambiar-contrasena/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\autenticacion\views.py", line 145, in cambiar_contrasena
+    return render(request, 'autenticacion/cambiar_contrasena.html', {'form': form})
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: autenticacion/cambiar_contrasena.html
+"GET /cambiar-contrasena/ HTTP/1.1" 500 93473
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 61061)
+Internal Server Error: /cambiar-contrasena/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\autenticacion\views.py", line 145, in cambiar_contrasena
+    return render(request, 'autenticacion/cambiar_contrasena.html', {'form': form})
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: autenticacion/cambiar_contrasena.html
+"GET /cambiar-contrasena/ HTTP/1.1" 500 93473
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 63240)
+Internal Server Error: /cambiar-contrasena/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\autenticacion\views.py", line 145, in cambiar_contrasena
+    return render(request, 'autenticacion/cambiar_contrasena.html', {'form': form})
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: autenticacion/cambiar_contrasena.html
+"GET /cambiar-contrasena/ HTTP/1.1" 500 93473
+Internal Server Error: /cambiar-contrasena/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\autenticacion\views.py", line 145, in cambiar_contrasena
+    return render(request, 'autenticacion/cambiar_contrasena.html', {'form': form})
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: autenticacion/cambiar_contrasena.html
+"GET /cambiar-contrasena/ HTTP/1.1" 500 93473
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 63252)
+Internal Server Error: /cambiar-contrasena/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\autenticacion\views.py", line 145, in cambiar_contrasena
+    return render(request, 'autenticacion/cambiar_contrasena.html', {'form': form})
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: autenticacion/cambiar_contrasena.html
+"GET /cambiar-contrasena/ HTTP/1.1" 500 93473
+Internal Server Error: /cambiar-contrasena/
+Traceback (most recent call last):
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\autenticacion\views.py", line 145, in cambiar_contrasena
+    return render(request, 'autenticacion/cambiar_contrasena.html', {'form': form})
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: autenticacion/cambiar_contrasena.html
+"GET /cambiar-contrasena/ HTTP/1.1" 500 93308
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 63437)
+"GET /cambiar-contrasena/ HTTP/1.1" 200 10103
+"GET /perfil/ HTTP/1.1" 200 9257
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 64325)
+"GET /cambiar-contrasena/ HTTP/1.1" 200 10103
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 64507)
+"GET /dashboard/ HTTP/1.1" 200 8939
+"GET /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 2066
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 11788
+"GET /produccion/crear/ HTTP/1.1" 200 25124
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 52413)
+"GET /produccion/ HTTP/1.1" 200 14233
+"GET /ventas/ HTTP/1.1" 200 14534
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 11788
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 58615)
+"GET /dashboard/ HTTP/1.1" 200 11788
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 58798)
+"GET /cotizaciones/crear/ HTTP/1.1" 200 26446
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 58809)
+"GET /produccion/crear/ HTTP/1.1" 200 25124
+"GET /diseno/nuevo/ HTTP/1.1" 200 16142
+"GET /ventas/crear/ HTTP/1.1" 200 32945
+"GET / HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 11788
+"GET /ventas/crear/ HTTP/1.1" 200 32945
+"GET /ventas/ HTTP/1.1" 200 14534
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 11788
+"GET /cotizaciones/crear/ HTTP/1.1" 200 26446
+"POST /cotizaciones/crear/ HTTP/1.1" 302 0
+"GET /cotizaciones/1/ HTTP/1.1" 200 18616
+"GET /cotizaciones/1/editar/ HTTP/1.1" 200 34366
+"POST /cotizaciones/1/editar/ HTTP/1.1" 302 0
+"GET /cotizaciones/1/ HTTP/1.1" 200 18621
+Unauthorized: /api/cotizaciones-aprobadas/
+"GET /api/cotizaciones-aprobadas/ HTTP/1.1" 401 9988
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+"GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 304 0
+"GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+"GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+Watching for file changes with StatReloader
+"GET /api/cotizaciones-aprobadas/ HTTP/1.1" 200 11757
+"GET /cotizaciones/pdf/1/ HTTP/1.1" 200 3179
+Cotización COT-0001 enviada exitosamente a yeison_camilom@hotmail.com
+"GET /cotizaciones/1/enviar-correo/ HTTP/1.1" 302 0
+"GET /cotizaciones/1/ HTTP/1.1" 200 18634
+"GET /cotizaciones/1/ HTTP/1.1" 200 17923
+"GET /ventas/ HTTP/1.1" 200 14118
+"GET /ventas/ HTTP/1.1" 200 14167
+"GET /ventas/crear/ HTTP/1.1" 200 32721
+"GET /ventas/ HTTP/1.1" 200 14167
+"GET /admin/ HTTP/1.1" 200 10395
+- Broken pipe from ('127.0.0.1', 63454)
+"GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+"GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+"GET /ventas/ HTTP/1.1" 200 13798
+"GET /admin/ HTTP/1.1" 200 10395
+"GET /dashboard/ HTTP/1.1" 200 11052
+"GET /dashboard/ HTTP/1.1" 200 11052
+"GET /cotizaciones/crear/ HTTP/1.1" 200 25710
+"GET /produccion/crear/ HTTP/1.1" 200 24599
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\produccion\forms.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\produccion\forms.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\produccion\forms.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /produccion/crear/ HTTP/1.1" 200 24493
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\produccion\forms.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\produccion\forms.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\produccion\forms.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\produccion\forms.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\produccion\forms.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\produccion\forms.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\produccion\forms.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\produccion\forms.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\produccion\forms.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ASUS\Desktop\VARIOS PC TABSUCOL\ENTREGA\Syncropro\produccion\forms.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /produccion/crear/ HTTP/1.1" 200 24294
+"GET /produccion/crear/ HTTP/1.1" 200 24294
+"GET /perfil/ HTTP/1.1" 200 11359
+"GET /configuracion/ HTTP/1.1" 200 11349
+"GET /cambiar-contrasena/ HTTP/1.1" 200 12232
+"GET /dashboard/ HTTP/1.1" 200 11052
+"GET /dashboard/ HTTP/1.1" 200 10983
+"GET /dashboard/ HTTP/1.1" 200 10983
+"GET /dashboard/ HTTP/1.1" 200 11052
+"GET /dashboard/ HTTP/1.1" 200 11052
+"GET /dashboard/ HTTP/1.1" 200 11052
+"GET /dashboard/ HTTP/1.1" 200 11052
+"GET /dashboard/ HTTP/1.1" 200 11052
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 11052
+"GET /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 2066
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 11052
+"GET /cotizaciones/ HTTP/1.1" 200 15329
+"GET /diseno/nuevo/ HTTP/1.1" 200 15406

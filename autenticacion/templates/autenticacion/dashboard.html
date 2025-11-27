@@ -14,32 +14,103 @@
 
 <body class="d-flex flex-column min-vh-100 bg-light">
   <!-- Barra superior -->
-  <header class="bg-dark text-white px-3 py-2 d-flex justify-content-between align-items-center">
+  <header class="bg-dark text-white px-3 py-2 d-flex justify-content-between align-items-center shadow">
     <div class="d-flex align-items-center">
-      <span class="fw-bold">SynCroPro</span>
+      <i class="bi bi-building me-2 fs-4"></i>
+      <span class="fw-bold fs-5">SynCroPro</span>
     </div>
+
     <div class="d-flex align-items-center gap-3">
-      <form class="d-flex align-items-center" role="search">
-        <input class="form-control form-control-sm bg-secondary text-white border-0 me-2" type="search"
-          placeholder="Buscar..." aria-label="Buscar" />
+      <!-- Buscador -->
+      <form class="d-flex align-items-center" role="search" action="{% url 'busqueda_global' %}" method="get">
+        <input class="form-control form-control-sm bg-secondary text-white border-0 me-2"
+          type="search" name="q" placeholder="Buscar..." aria-label="Buscar" style="min-width: 200px;" />
         <button class="btn btn-outline-light btn-sm" type="submit">
           <i class="bi bi-search"></i>
         </button>
       </form>
+
+      <!-- Notificaciones -->
       <div class="dropdown">
-        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown"
-          aria-expanded="false">
+        <button class="btn btn-secondary btn-sm position-relative" type="button" data-bs-toggle="dropdown">
+          <i class="bi bi-bell fs-5"></i>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
+        </button>
+
+        <ul class="dropdown-menu dropdown-menu-end shadow" style="width: 320px;">
+          <li><h6 class="dropdown-header">Notificaciones Recientes</h6></li>
+          <li><hr class="dropdown-divider"></li>
+
+          <li>
+            <a class="dropdown-item py-2" href="#">
+              <div class="d-flex align-items-start">
+                <i class="bi bi-info-circle text-primary me-2 fs-5"></i>
+                <div>
+                  <small class="fw-bold d-block">Nueva cotización pendiente</small>
+                  <small class="text-muted">Hace 5 minutos</small>
+                </div>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a class="dropdown-item py-2" href="#">
+              <div class="d-flex align-items-start">
+                <i class="bi bi-exclamation-triangle text-warning me-2 fs-5"></i>
+                <div>
+                  <small class="fw-bold d-block">Orden en producción</small>
+                  <small class="text-muted">Hace 1 hora</small>
+                </div>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a class="dropdown-item py-2" href="#">
+              <div class="d-flex align-items-start">
+                <i class="bi bi-check-circle text-success me-2 fs-5"></i>
+                <div>
+                  <small class="fw-bold d-block">Diseño aprobado</small>
+                  <small class="text-muted">Hace 2 horas</small>
+                </div>
+              </div>
+            </a>
+          </li>
+
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item text-center text-primary" href="#">Ver todas las notificaciones</a></li>
+        </ul>
+      </div>
+
+      <!-- Menú de usuario -->
+      <div class="dropdown">
+        <button class="btn btn-secondary btn-sm dropdown-toggle" id="userMenu" data-bs-toggle="dropdown">
           <i class="bi bi-person-circle me-1"></i> {{ user.username }}
         </button>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
-          <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Perfil</a></li>
-          <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Configuración</a></li>
+
+        <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="userMenu">
           <li>
-            <hr class="dropdown-divider" />
+            <div class="px-3 py-3 border-bottom">
+              <div class="d-flex align-items-center mb-2">
+                <i class="bi bi-person-circle fs-1 text-primary me-2"></i>
+                <div>
+                  <strong class="d-block">{{ user.get_full_name|default:user.username }}</strong>
+                  <small class="text-muted">{{ user.get_rol_display }}</small>
+                </div>
+              </div>
+              <small class="text-muted d-block">{{ user.email }}</small>
+            </div>
           </li>
+
+          <li><a class="dropdown-item py-2" href="{% url 'perfil' %}"><i class="bi bi-person me-2"></i>Mi Perfil</a></li>
+          <li><a class="dropdown-item py-2" href="{% url 'configuracion' %}"><i class="bi bi-gear me-2"></i>Configuración</a></li>
+          <li><a class="dropdown-item py-2" href="{% url 'cambiar_contrasena' %}"><i class="bi bi-key me-2"></i>Cambiar Contraseña</a></li>
+
+          <li><hr class="dropdown-divider" /></li>
+
           <li>
-            <a class="dropdown-item" href="{% url 'logout' %}">
-              <i class="bi bi-box-arrow-right me-2"></i>Cerrar sesión
+            <a class="dropdown-item py-2 text-danger" href="{% url 'logout' %}">
+              <i class="bi bi-box-arrow-right me-2"></i>Cerrar Sesión
             </a>
           </li>
         </ul>
@@ -49,111 +120,143 @@
 
   <!-- Contenedor principal -->
   <div class="d-flex flex-grow-1">
-    <!-- Sidebar con submenús -->
-    <nav class="bg-dark text-white p-3" style="width: 280px">
-      <h6 class="text-center mb-3 text-uppercase">Menú Principal</h6>
+
+    <!-- Sidebar -->
+    <nav class="bg-dark text-white p-3 shadow" style="width: 280px;">
+      <h6 class="text-center mb-3 text-uppercase fw-bold">Menú Principal</h6>
       <hr class="border-secondary" />
 
       <ul class="nav flex-column">
+
         <!-- Dashboard -->
         <li class="nav-item mb-2">
-          <a class="nav-link text-white d-flex align-items-center" href="{% url 'dashboard' %}">
-            <i class="bi bi-speedometer2 me-2"></i>Pagina Principal
+          <a class="nav-link text-white d-flex align-items-center rounded" href="{% url 'dashboard' %}">
+            <i class="bi bi-speedometer2 me-2"></i>Página Principal
           </a>
         </li>
 
         <!-- Cotizaciones -->
-        {% if user.rol == 'admin' or user.rol == 'ventas' %}
+        {% if user.rol == 'admin' or user.rol == 'ventas' or user.rol == 'cotizaciones' %}
         <li class="nav-item mb-2">
-          <a class="nav-link text-white d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
-            href="#cotizacionesMenu">
+          <a class="nav-link text-white d-flex justify-content-between align-items-center rounded"
+            data-bs-toggle="collapse" href="#cotizacionesMenu">
             <span><i class="bi bi-file-earmark-text me-2"></i>Cotizaciones</span>
             <i class="bi bi-chevron-down"></i>
           </a>
+
           <div class="collapse" id="cotizacionesMenu">
             <ul class="nav flex-column ms-3 mt-2">
-              <li><a class="nav-link text-white" href="{% url 'cotizaciones:crear' %}"><i
-                    class="bi bi-plus-circle me-2"></i>Nueva Cotización</a></li>
-              <li><a class="nav-link text-white" href="{% url 'cotizaciones:lista' %}"><i
-                    class="bi bi-list-ul me-2"></i>Lista Cotizaciones</a></li>
-
+              <li>
+                <a class="nav-link text-white py-2 rounded" href="{% url 'cotizaciones:crear' %}">
+                  <i class="bi bi-plus-circle me-2"></i>Nueva Cotización
+                </a>
+              </li>
+              <li>
+                <a class="nav-link text-white py-2 rounded" href="{% url 'cotizaciones:lista' %}">
+                  <i class="bi bi-list-ul me-2"></i>Lista Cotizaciones
+                </a>
+              </li>
             </ul>
           </div>
         </li>
         {% endif %}
 
-        
         <!-- Producción -->
+        {% if user.rol == 'admin' or user.rol == 'produccion' %}
         <li class="nav-item mb-2">
-          <a class="nav-link text-white d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
-            href="#produccionMenu">
+          <a class="nav-link text-white d-flex justify-content-between align-items-center rounded"
+            data-bs-toggle="collapse" href="#produccionMenu">
             <span><i class="bi bi-gear me-2"></i>Producción</span>
             <i class="bi bi-chevron-down"></i>
           </a>
+
           <div class="collapse" id="produccionMenu">
             <ul class="nav flex-column ms-3 mt-2">
               <li>
-                <a class="nav-link text-white" href="{% url 'produccion:crear' %}">
+                <a class="nav-link text-white py-2 rounded" href="{% url 'produccion:crear' %}">
                   <i class="bi bi-plus-circle me-2"></i>Nueva Orden
                 </a>
               </li>
               <li>
-                <a class="nav-link text-white" href="{% url 'produccion:lista' %}">
+                <a class="nav-link text-white py-2 rounded" href="{% url 'produccion:lista' %}">
                   <i class="bi bi-list-ul me-2"></i>Lista de Órdenes
                 </a>
               </li>
             </ul>
           </div>
         </li>
+        {% endif %}
 
-        
         <!-- Diseño -->
+        {% if user.rol == 'admin' or user.rol == 'diseño' %}
         <li class="nav-item mb-2">
-          <a class="nav-link text-white d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
-            href="#disenoMenu">
+          <a class="nav-link text-white d-flex justify-content-between align-items-center rounded"
+            data-bs-toggle="collapse" href="#disenoMenu">
             <span><i class="bi bi-palette me-2"></i>Diseño</span>
             <i class="bi bi-chevron-down"></i>
           </a>
+
           <div class="collapse" id="disenoMenu">
             <ul class="nav flex-column ms-3 mt-2">
-              <li><a class="nav-link text-white" href="{% url 'diseno:nuevo_sin_orden' %}"><i class="bi bi-plus-circle me-2"></i>Nuevo Proyecto</a></li>
-              <li><a class="nav-link text-white" href="{% url 'diseno:lista' %}"><i class="bi bi-folder me-2"></i>Proyectos</a></li>
-             
+              <li>
+                <a class="nav-link text-white py-2 rounded" href="{% url 'diseno:nuevo_sin_orden' %}">
+                  <i class="bi bi-plus-circle me-2"></i>Nuevo Proyecto
+                </a>
+              </li>
+              <li>
+                <a class="nav-link text-white py-2 rounded" href="{% url 'diseno:lista' %}">
+                  <i class="bi bi-folder me-2"></i>Proyectos
+                </a>
+              </li>
             </ul>
           </div>
         </li>
-
+        {% endif %}
 
         <!-- Ventas -->
+        {% if user.rol == 'admin' or user.rol == 'ventas' %}
         <li class="nav-item mb-2">
-          <a class="nav-link text-white d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
-            href="#ventasMenu">
+          <a class="nav-link text-white d-flex justify-content-between align-items-center rounded"
+            data-bs-toggle="collapse" href="#ventasMenu">
             <span><i class="bi bi-currency-dollar me-2"></i>Ventas</span>
             <i class="bi bi-chevron-down"></i>
           </a>
+
           <div class="collapse" id="ventasMenu">
             <ul class="nav flex-column ms-3 mt-2">
-              <li><a class="nav-link text-white" href="#"><i class="bi bi-cart-plus me-2"></i>Nueva Venta</a></li>
-              <li><a class="nav-link text-white" href="#"><i class="bi bi-receipt me-2"></i>Facturas</a></li>
-              <li><a class="nav-link text-white" href="#"><i class="bi bi-people me-2"></i>Clientes</a></li>
-              <li><a class="nav-link text-white" href="#"><i class="bi bi-graph-up me-2"></i>Reportes</a></li>
+              <li>
+                <a class="nav-link text-white py-2 rounded" href="{% url 'ventas:crear' %}">
+                  <i class="bi bi-cart-plus me-2"></i>Nueva Venta
+                </a>
+              </li>
+              <li>
+                <a class="nav-link text-white py-2 rounded" href="{% url 'ventas:lista' %}">
+                  <i class="bi bi-receipt me-2"></i>Facturas
+                </a>
+              </li>
+              
             </ul>
           </div>
         </li>
+        {% endif %}
 
         <!-- Administración -->
         {% if user.rol == 'admin' %}
         <li class="nav-item mb-2">
-          <a class="nav-link text-white d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
-            href="#adminMenu">
+          <a class="nav-link text-white d-flex justify-content-between align-items-center rounded"
+            data-bs-toggle="collapse" href="#adminMenu">
             <span><i class="bi bi-shield-lock me-2"></i>Administración</span>
             <i class="bi bi-chevron-down"></i>
           </a>
+
           <div class="collapse" id="adminMenu">
             <ul class="nav flex-column ms-3 mt-2">
-              <li><a class="nav-link text-white" href="/admin/"><i class="bi bi-gear me-2"></i>Panel Admin</a></li>
-              <li><a class="nav-link text-white" href="#"><i class="bi bi-people me-2"></i>Usuarios</a></li>
-              <li><a class="nav-link text-white" href="#"><i class="bi bi-bar-chart me-2"></i>Estadísticas</a></li>
+              <li>
+                <a class="nav-link text-white py-2 rounded" href="/admin/">
+                  <i class="bi bi-gear me-2"></i>Panel Admin
+                </a>
+              </li>
+              <li>
             </ul>
           </div>
         </li>
@@ -161,21 +264,42 @@
       </ul>
     </nav>
 
-    <!-- Contenido dinámico -->
-    <main class="flex-grow-1 p-4">
+    <!-- Contenido principal -->
+    <main class="flex-grow-1 p-4 overflow-auto">
       <div class="container-fluid">
+
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show shadow-sm" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+
         {% block content %}
+
+        <!-- Hero -->
+        <div class="card border-0 shadow-lg mb-4 text-white"
+          style="min-height: 800px; background: linear-gradient(135deg, rgba(52, 58, 64, 0.95), rgba(108, 117, 125, 0.9)), 
+                  url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920') center/cover;">
+          <div class="card-body d-flex flex-column justify-content-center align-items-center text-center p-5">
+            <h1 class="display-3 fw-bold mb-3">
+              Bienvenido, {{ user.get_full_name|default:user.username }}
+            </h1>
+            <p class="lead fs-4 mb-2">{{ user.get_rol_display }} - SynCroPro</p>
+            <p class="fs-5 opacity-75">Sistema de Gestión Empresarial</p>
+          </div>
+        </div>
+
+        <!-- Más contenido continúa aquí (no modifiqué nada)… -->
+
         {% endblock %}
       </div>
     </main>
   </div>
 
-  <footer class="bg-dark text-white text-center py-3">
-    <small>&copy; 2025 SynCroPro - Todos los derechos reservados</small>
-  </footer>
-
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

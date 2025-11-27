@@ -1,0 +1,423 @@
+{% extends 'autenticacion/dashboard.html' %}
+{% load humanize %} 
+{% block title %}Editar Venta #{{ venta.numero }} - SynCroPro{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow-lg">
+        <div class="card-header bg-warning text-white">
+            <h5 class="mb-0"><i class="bi bi-pencil me-2"></i> Editar Venta #{{ venta.numero }}</h5>
+        </div>
+        <div class="card-body">
+            <form method="POST" id="ventaForm">
+                {% csrf_token %}
+
+                {% if form.errors %}
+                <div class="alert alert-danger">
+                    <strong>Errores en el formulario:</strong>
+                    <ul>
+                        {% for field in form %}
+                            {% if field.errors %}
+                                <li>{{ field.label }}: {{ field.errors|join:", " }}</li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                <!-- DATOS CLIENTE -->
+                <div class="card mb-4">
+                    <div class="card-header bg-light"><h6 class="mb-0">Datos del Cliente</h6></div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Número de Venta</label>
+                                <input type="text" class="form-control" value="{{ venta.numero }}" disabled>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Nombre del Cliente *</label>
+                                {{ form.cliente_nombre }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Razón Social</label>
+                                {{ form.razon_social }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">NIT</label>
+                                {{ form.nit }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Teléfono *</label>
+                                {{ form.telefono }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Correo Electrónico *</label>
+                                {{ form.correo_electronico }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label class="form-label">Dirección</label>
+                                {{ form.direccion }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PAGO Y ESTADO -->
+                <div class="card mb-4">
+                    <div class="card-header bg-light"><h6 class="mb-0">Información de Pago</h6></div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Estado *</label>
+                                {{ form.estado }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Método de Pago *</label>
+                                {{ form.metodo_pago }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label class="form-label">Notas</label>
+                                {{ form.notas }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TABLEROS Y MATERIALES -->
+                <div class="card mb-4">
+                    <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                        <h6 class="mb-0">Items y Materiales</h6>
+                        <button type="button" class="btn btn-success btn-sm" id="add-grupo">
+                            <i class="bi bi-plus-circle"></i> Agregar Item
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div id="grupos-container">
+                            {% for tablero in tableros %}
+                            <div class="card mb-2 grupo-card p-2" data-tablero-index="{{ forloop.counter0 }}">
+                                <div class="row mb-2">
+                                    <div class="col-md-12">
+                                        <strong class="item-label">Item #{{ forloop.counter }}</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <label class="form-label">Descripción *</label>
+                                        <textarea name="tablero_{{ forloop.counter0 }}_descripcion" class="form-control" rows="2" required>{{ tablero.descripcion }}</textarea>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label class="form-label">Valor Item</label>
+                                        <input type="number" name="tablero_{{ forloop.counter0 }}_valor_tablero" class="form-control valor-tablero" step="1" min="0" value="{{ tablero.valor_tablero }}">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label class="form-label">Descuento Item (%)</label>
+                                        <input type="number" name="tablero_{{ forloop.counter0 }}_descuento_tablero" class="form-control descuento-tablero" step="1" min="0" max="100" value="{{ tablero.descuento_tablero }}">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label class="form-label">Descuento Materiales (%)</label>
+                                        <input type="number" name="tablero_{{ forloop.counter0 }}_descuento_materiales" class="form-control descuento-materiales" step="1" min="0" max="100" value="{{ tablero.descuento_materiales }}">
+                                    </div>
+                                    <div class="col-md-1 d-flex align-items-end">
+                                        <button type="button" class="btn btn-sm btn-outline-danger remove-grupo">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="materiales-section mt-3">
+                                    <h6 class="mb-2"><i class="bi bi-box-seam"></i> Materiales del Item</h6>
+                                    <div class="materiales-container">
+                                        {% for material in tablero.materiales_venta.all %}
+                                        <div class="card mb-2 material-container p-2">
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <label class="form-label">Nombre del material *</label>
+                                                    <input type="text" name="tablero_{{ forloop.parentloop.counter0 }}_material_{{ forloop.counter0 }}_nombre" class="form-control" value="{{ material.nombre }}" required>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label class="form-label">Cantidad</label>
+                                                    <input type="number" name="tablero_{{ forloop.parentloop.counter0 }}_material_{{ forloop.counter0 }}_cantidad" class="form-control material-cantidad" min="1" value="{{ material.cantidad }}">
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label class="form-label">Valor Unitario</label>
+                                                    <input type="number" name="tablero_{{ forloop.parentloop.counter0 }}_material_{{ forloop.counter0 }}_valor_unitario" class="form-control material-valor" step="1" min="0" value="{{ material.valor_unitario }}">
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label class="form-label">Descuento (%)</label>
+                                                    <input type="number" name="tablero_{{ forloop.parentloop.counter0 }}_material_{{ forloop.counter0 }}_descuento" class="form-control material-descuento" step="1" min="0" max="100" value="{{ material.descuento }}">
+                                                </div>
+                                                <div class="col-md-1 d-flex align-items-end">
+                                                    <button type="button" class="btn btn-sm btn-outline-danger remove-material">
+                                                        <i class="bi bi-trash"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                    <button type="button" class="btn btn-sm btn-primary add-material">
+                                        <i class="bi bi-plus-circle"></i> Agregar Material
+                                    </button>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RESUMEN -->
+                <div class="card mb-4">
+                    <div class="card-header bg-secondary text-white">
+                        <h6 class="mb-0">Resumen de la Venta</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 offset-md-3">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td class="fw-bold">Subtotal:</td>
+                                            <td class="text-end"><span id="subtotal">${{ venta.subtotal|floatformat:0 }}</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">IVA (19%):</td>
+                                            <td class="text-end"><span id="iva">${{ venta.iva|floatformat:0 }}</span></td>
+                                        </tr>
+                                        <tr class="table-active">
+                                            <td class="fw-bold">Total:</td>
+                                            <td class="text-end fw-bold text-primary"><span id="total">${{ venta.total|floatformat:0 }}</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <a href="{% url 'ventas:detalle' venta.pk %}" class="btn btn-secondary">
+                        <i class="bi bi-x-circle"></i> Cancelar
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-save"></i> Guardar Cambios
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+// Inicializar contador con tableros existentes
+let tableroIndex = document.querySelectorAll('.grupo-card').length;
+
+// Template para nuevo tablero
+function crearTableroHTML(index) {
+    return `
+        <div class="card mb-2 grupo-card p-2" data-tablero-index="${index}">
+            <div class="row mb-2">
+                <div class="col-md-12">
+                    <strong class="item-label">Item #${index + 1}</strong>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <label class="form-label">Descripción *</label>
+                    <textarea name="tablero_${index}_descripcion" class="form-control" rows="2" required></textarea>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Valor Item</label>
+                    <input type="number" name="tablero_${index}_valor_tablero" class="form-control valor-tablero" step="1" min="0" value="0">
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Descuento Item (%)</label>
+                    <input type="number" name="tablero_${index}_descuento_tablero" class="form-control descuento-tablero" step="1" min="0" max="100" value="0">
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Descuento Materiales (%)</label>
+                    <input type="number" name="tablero_${index}_descuento_materiales" class="form-control descuento-materiales" step="1" min="0" max="100" value="0">
+                </div>
+                <div class="col-md-1 d-flex align-items-end">
+                    <button type="button" class="btn btn-sm btn-outline-danger remove-grupo">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="materiales-section mt-3">
+                <h6 class="mb-2"><i class="bi bi-box-seam"></i> Materiales del Item</h6>
+                <div class="materiales-container"></div>
+                <button type="button" class="btn btn-sm btn-primary add-material">
+                    <i class="bi bi-plus-circle"></i> Agregar Material
+                </button>
+            </div>
+        </div>
+    `;
+}
+
+// Template para nuevo material
+function crearMaterialHTML(tableroIndex, materialIndex) {
+    return `
+        <div class="card mb-2 material-container p-2">
+            <div class="row">
+                <div class="col-md-5">
+                    <label class="form-label">Nombre del material *</label>
+                    <input type="text" name="tablero_${tableroIndex}_material_${materialIndex}_nombre" class="form-control" required>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Cantidad</label>
+                    <input type="number" name="tablero_${tableroIndex}_material_${materialIndex}_cantidad" class="form-control material-cantidad" min="1" value="1">
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Valor Unitario</label>
+                    <input type="number" name="tablero_${tableroIndex}_material_${materialIndex}_valor_unitario" class="form-control material-valor" step="1" min="0" value="0">
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Descuento (%)</label>
+                    <input type="number" name="tablero_${tableroIndex}_material_${materialIndex}_descuento" class="form-control material-descuento" step="1" min="0" max="100" value="0">
+                </div>
+                <div class="col-md-1 d-flex align-items-end">
+                    <button type="button" class="btn btn-sm btn-outline-danger remove-material">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// Agregar nuevo tablero
+document.addEventListener('DOMContentLoaded', function() {
+    tableroIndex = document.querySelectorAll('.grupo-card').length;
+    actualizarEventListeners();
+    calcularTotales();
+});
+
+document.getElementById('add-grupo').addEventListener('click', agregarTablero);
+
+function agregarTablero() {
+    const container = document.getElementById('grupos-container');
+    const newTablero = document.createElement('div');
+    newTablero.innerHTML = crearTableroHTML(tableroIndex);
+    container.appendChild(newTablero.firstElementChild);
+    
+    actualizarEventListeners();
+    tableroIndex++;
+    calcularTotales();
+}
+
+// Actualizar event listeners
+function actualizarEventListeners() {
+    // Eliminar tablero
+    document.querySelectorAll('.remove-grupo').forEach(btn => {
+        btn.replaceWith(btn.cloneNode(true));
+    });
+    document.querySelectorAll('.remove-grupo').forEach(btn => {
+        btn.addEventListener('click', function() {
+            this.closest('.grupo-card').remove();
+            reindexarTableros();
+            calcularTotales();
+        });
+    });
+    
+    // Agregar material
+    document.querySelectorAll('.add-material').forEach(btn => {
+        btn.replaceWith(btn.cloneNode(true));
+    });
+    document.querySelectorAll('.add-material').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const grupoCard = this.closest('.grupo-card');
+            const tableroIdx = grupoCard.dataset.tableroIndex;
+            const materialesContainer = grupoCard.querySelector('.materiales-container');
+            const materialCount = materialesContainer.querySelectorAll('.material-container').length;
+            
+            const newMaterial = document.createElement('div');
+            newMaterial.innerHTML = crearMaterialHTML(tableroIdx, materialCount);
+            materialesContainer.appendChild(newMaterial.firstElementChild);
+            
+            actualizarEventListeners();
+            calcularTotales();
+        });
+    });
+    
+    // Eliminar material
+    document.querySelectorAll('.remove-material').forEach(btn => {
+        btn.replaceWith(btn.cloneNode(true));
+    });
+    document.querySelectorAll('.remove-material').forEach(btn => {
+        btn.addEventListener('click', function() {
+            this.closest('.material-container').remove();
+            calcularTotales();
+        });
+    });
+    
+    // Calcular al cambiar valores
+    document.querySelectorAll('.valor-tablero, .descuento-tablero, .descuento-materiales, .material-cantidad, .material-valor, .material-descuento').forEach(input => {
+        input.replaceWith(input.cloneNode(true));
+    });
+    document.querySelectorAll('.valor-tablero, .descuento-tablero, .descuento-materiales, .material-cantidad, .material-valor, .material-descuento').forEach(input => {
+        input.addEventListener('input', calcularTotales);
+    });
+}
+
+// Reindexar tableros después de eliminar
+function reindexarTableros() {
+    const tableros = document.querySelectorAll('.grupo-card');
+    tableros.forEach((tablero, index) => {
+        tablero.dataset.tableroIndex = index;
+        tablero.querySelector('.item-label').textContent = `Item #${index + 1}`;
+        
+        // Actualizar nombres de inputs
+        tablero.querySelectorAll('input, textarea').forEach(input => {
+            if (input.name) {
+                input.name = input.name.replace(/tablero_\d+_/, `tablero_${index}_`);
+            }
+        });
+    });
+    tableroIndex = tableros.length;
+}
+
+// Calcular totales
+function calcularTotales() {
+    let subtotalGeneral = 0;
+    
+    document.querySelectorAll('.grupo-card').forEach(tablero => {
+        const valorTablero = parseFloat(tablero.querySelector('.valor-tablero').value) || 0;
+        const descTablero = parseFloat(tablero.querySelector('.descuento-tablero').value) || 0;
+        const descMateriales = parseFloat(tablero.querySelector('.descuento-materiales').value) || 0;
+        
+        // Subtotal tablero con descuento
+        const subtotalTablero = valorTablero * (100 - descTablero) / 100;
+        
+        // Subtotal materiales
+        let subtotalMateriales = 0;
+        tablero.querySelectorAll('.material-container').forEach(material => {
+            const cantidad = parseFloat(material.querySelector('.material-cantidad').value) || 0;
+            const valorUnit = parseFloat(material.querySelector('.material-valor').value) || 0;
+            const descMat = parseFloat(material.querySelector('.material-descuento').value) || 0;
+            
+            const subtotalMat = (cantidad * valorUnit) * (100 - descMat) / 100;
+            subtotalMateriales += subtotalMat;
+        });
+        
+        // Aplicar descuento global a materiales
+        subtotalMateriales = subtotalMateriales * (100 - descMateriales) / 100;
+        
+        subtotalGeneral += subtotalTablero + subtotalMateriales;
+    });
+    
+    const iva = subtotalGeneral * 0.19;
+    const total = subtotalGeneral + iva;
+    
+    document.getElementById('subtotal').textContent = '$' + Math.round(subtotalGeneral).toLocaleString('es-CO');
+    document.getElementById('iva').textContent = '$' + Math.round(iva).toLocaleString('es-CO');
+    document.getElementById('total').textContent = '$' + Math.round(total).toLocaleString('es-CO');
+}
+</script>
+{% endblock %}

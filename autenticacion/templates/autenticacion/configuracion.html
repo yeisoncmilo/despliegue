@@ -1,0 +1,30 @@
+{% extends 'autenticacion/dashboard.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Configuración general</h2>
+    <p>Desde aquí podrás definir ajustes del sistema (en desarrollo).</p>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="card-title">Preferencias de usuario</h5>
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label>Idioma</label>
+                    <select class="form-select" disabled>
+                        <option>Español</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label>Zona horaria</label>
+                    <select class="form-select" disabled>
+                        <option>America/Bogotá</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" disabled>Guardar cambios</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

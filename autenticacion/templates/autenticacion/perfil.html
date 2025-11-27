@@ -1,0 +1,31 @@
+{% extends 'autenticacion/dashboard.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Mi perfil</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label>Nombre</label>
+            <input type="text" name="first_name" value="{{ usuario.first_name }}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label>Apellido</label>
+            <input type="text" name="last_name" value="{{ usuario.last_name }}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label>Email</label>
+            <input type="email" name="email" value="{{ usuario.email }}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label>Teléfono</label>
+            <input type="text" name="telefono" value="{{ usuario.telefono }}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label>Departamento</label>
+            <input type="text" name="departamento" value="{{ usuario.departamento }}" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+    </form>
+</div>
+{% endblock %}

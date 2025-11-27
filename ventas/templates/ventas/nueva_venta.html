@@ -1,170 +1,247 @@
 {% extends 'autenticacion/dashboard.html' %}
-
-{% block title %}Nueva Factura - SynCroPro{% endblock %}
-
+{% load humanize %}
+{% block title %}Nueva Venta - SynCroPro{% endblock %}
 {% block content %}
 <div class="container mt-4">
     <div class="card shadow-lg">
         <div class="card-header bg-success text-white">
-            <h5 class="mb-0"><i class="bi bi-plus-circle me-2"></i> Nueva Factura</h5>
+            <h5 class="mb-0"><i class="bi bi-currency-dollar me-2"></i> Nueva Venta</h5>
         </div>
         <div class="card-body">
-            <form method="post" id="factura-form">
+            <form method="POST" id="ventaForm">
                 {% csrf_token %}
-
-                <!-- Cargar desde fuente existente -->
-                <div class="row mb-4">
-                    <div class="col-md-4">
-                        <label for="cotizacion-select" class="form-label">Cargar desde cotización</label>
-                        <select id="cotizacion-select" class="form-select">
-                            <option value="">Seleccione una cotización</option>
-                            {% for cotizacion in cotizaciones %}
-                                <option value="{{ cotizacion.id }}">#{{ cotizacion.numero }} - {{ cotizacion.cliente_nombre }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="orden-select" class="form-label">Cargar desde orden de producción</label>
-                        <select id="orden-select" class="form-select">
-                            <option value="">Seleccione una orden</option>
-                            {% for orden in ordenes %}
-                                <option value="{{ orden.id }}">#{{ orden.numero }} - {{ orden.cliente_nombre }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="col-md-4 d-flex align-items-end">
-                        <button type="button" id="cargar-cotizacion" class="btn btn-outline-primary me-2">
-                            <i class="bi bi-download"></i> Cotización
-                        </button>
-                        <button type="button" id="cargar-orden" class="btn btn-outline-info">
-                            <i class="bi bi-download"></i> Orden
-                        </button>
-                    </div>
-                </div>
-
-                <hr>
-
-                <!-- Datos de la factura -->
-                <h5 class="text-primary mb-3">Datos de la Factura</h5>
                 
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label class="form-label">Número de factura</label>
-                        {{ form.numero }}
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label">Método de pago</label>
-                        {{ form.metodo_pago }}
-                    </div>
+                {% if form.errors %}
+                <div class="alert alert-danger">
+                    <strong>Errores en el formulario:</strong>
+                    <ul>
+                        {% for field in form %}
+                            {% if field.errors %}
+                                <li>{{ field.label }}: {{ field.errors|join:", " }}</li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
                 </div>
+                {% endif %}
 
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label class="form-label">Nombre del cliente</label>
-                        {{ form.cliente_nombre }}
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label">Razón social</label>
-                        {{ form.razon_social }}
-                    </div>
+                {% if cotizacion_origen %}
+                <div class="alert alert-info">
+                    <i class="bi bi-info-circle"></i> Creando venta desde cotización aprobada: 
+                    <strong>#{{ cotizacion_origen.numero }}</strong>
                 </div>
-
-                <div class="row mb-3">
-                    <div class="col-md-4">
-                        <label class="form-label">NIT</label>
-                        {{ form.nit }}
+                {% else %}
+                <!-- SECCIÓN: SELECCIÓN DE COTIZACIÓN -->
+                <div class="card mb-4">
+                    <div class="card-header bg-light">
+                        <h6 class="mb-0"><i class="bi bi-link"></i> Cargar desde Cotización (Opcional)</h6>
                     </div>
-                    <div class="col-md-4">
-                        <label class="form-label">Teléfono</label>
-                        {{ form.telefono }}
-                    </div>
-                    <div class="col-md-4">
-                        <label class="form-label">Correo electrónico</label>
-                        {{ form.correo_electronico }}
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <div class="col-md-8">
-                        <label class="form-label">Dirección</label>
-                        {{ form.direccion }}
-                    </div>
-                    <div class="col-md-4">
-                        <label class="form-label">Fecha de vencimiento</label>
-                        {{ form.fecha_vencimiento }}
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <div class="col-md-4">
-                        <label class="form-label">Descuento global (%)</label>
-                        {{ form.descuento_global }}
-                    </div>
-                    <div class="col-md-4">
-                        <label class="form-label">Cotización relacionada</label>
-                        {{ form.cotizacion }}
-                    </div>
-                    <div class="col-md-4">
-                        <label class="form-label">Orden de producción</label>
-                        {{ form.orden_produccion }}
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Observaciones</label>
-                    {{ form.observaciones }}
-                </div>
-
-                <hr>
-                
-                <!-- Items -->
-                <h5 class="text-primary mb-3">Items de la Factura</h5>
-                {{ formset.management_form }}
-
-                <div id="items-formset">
-                    {% for form in formset %}
-                        <div class="card mb-3 item-form p-3">
-                            <div class="row">
-                                <div class="col-md-5 mb-2">
-                                    <label class="form-label">Descripción</label>
-                                    {{ form.descripcion }}
-                                </div>
-                                <div class="col-md-2 mb-2">
-                                    <label class="form-label">Cantidad</label>
-                                    {{ form.cantidad }}
-                                </div>
-                                <div class="col-md-2 mb-2">
-                                    <label class="form-label">Valor unitario</label>
-                                    {{ form.valor_unitario }}
-                                </div>
-                                <div class="col-md-2 mb-2">
-                                    <label class="form-label">Descuento (%)</label>
-                                    {{ form.descuento }}
-                                </div>
-                                <div class="col-md-1 d-flex align-items-end mb-2">
-                                    <button type="button" class="btn btn-sm btn-outline-danger remove-item">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <label class="form-label">Seleccionar cotización</label>
+                                <select id="cotizacion-select-venta" class="form-select">
+                                    <option value="">-- Seleccione una cotización --</option>
+                                    {% for cotizacion in cotizaciones %}
+                                        <option value="{{ cotizacion.id }}">#{{ cotizacion.numero }} - {{ cotizacion.cliente_nombre }} (${{ cotizacion.total|floatformat:0|intcomma }})</option>
+                                    {% endfor %}
+                                </select>
                             </div>
-                            
-                            <!-- Campos ocultos -->
-                            {{ form.id }}
-                            {{ form.DELETE }}
+                            <div class="col-md-4 d-flex align-items-end">
+                                <button type="button" id="cargar-cotizacion-venta" class="btn btn-outline-primary w-100">
+                                    <i class="bi bi-download"></i> Cargar Datos
+                                </button>
+                            </div>
                         </div>
-                    {% endfor %}
+                    </div>
+                </div>
+                <hr class="my-4">
+                {% endif %}
+
+                <!-- DATOS CLIENTE -->
+                <div class="card mb-4">
+                    <div class="card-header bg-light"><h6 class="mb-0">Datos del Cliente</h6></div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Número de Venta</label>
+                                <input type="text" class="form-control" value="{{ numero_generado }}" disabled>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Nombre del Cliente *</label>
+                                {{ form.cliente_nombre }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Razón Social</label>
+                                {{ form.razon_social }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">NIT</label>
+                                {{ form.nit }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Teléfono *</label>
+                                {{ form.telefono }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Correo Electrónico *</label>
+                                {{ form.correo_electronico }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label class="form-label">Dirección</label>
+                                {{ form.direccion }}
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <button type="button" class="btn btn-outline-primary mt-2" id="add-item">
-                    <i class="bi bi-plus-circle"></i> Agregar Item
-                </button>
+                <!-- PAGO Y ESTADO -->
+                <div class="card mb-4">
+                    <div class="card-header bg-light"><h6 class="mb-0">Información de Pago</h6></div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Estado *</label>
+                                {{ form.estado }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Método de Pago *</label>
+                                {{ form.metodo_pago }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label class="form-label">Notas</label>
+                                {{ form.notas }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                <div class="d-flex justify-content-end mt-4">
-                    <a href="{% url 'ventas:lista' %}" class="btn btn-secondary me-2">
+                <!-- TABLEROS Y MATERIALES -->
+                <div class="card mb-4">
+                    <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                        <h6 class="mb-0">Items y Materiales</h6>
+                        <button type="button" class="btn btn-success btn-sm" id="add-grupo">
+                            <i class="bi bi-plus-circle"></i> Agregar Item
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div id="grupos-container">
+                            {% if cotizacion_origen %}
+                                {% for tablero in cotizacion_origen.tableros.all %}
+                                <div class="card mb-2 grupo-card p-2" data-tablero-index="{{ forloop.counter0 }}">
+                                    <div class="row mb-2">
+                                        <div class="col-md-12">
+                                            <strong class="item-label">Item #{{ forloop.counter }}</strong>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <label class="form-label">Descripción *</label>
+                                            <textarea name="tablero_{{ forloop.counter0 }}_descripcion" class="form-control" rows="2" required>{{ tablero.descripcion }}</textarea>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label class="form-label">Valor Item</label>
+                                            <input type="number" name="tablero_{{ forloop.counter0 }}_valor_tablero" class="form-control valor-tablero" step="1" min="0" value="{{ tablero.valor_tablero }}">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label class="form-label">Descuento Item (%)</label>
+                                            <input type="number" name="tablero_{{ forloop.counter0 }}_descuento_tablero" class="form-control descuento-tablero" step="1" min="0" max="100" value="{{ tablero.descuento_tablero }}">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label class="form-label">Descuento Materiales (%)</label>
+                                            <input type="number" name="tablero_{{ forloop.counter0 }}_descuento_materiales" class="form-control descuento-materiales" step="1" min="0" max="100" value="{{ tablero.descuento_materiales }}">
+                                        </div>
+                                        <div class="col-md-1 d-flex align-items-end">
+                                            <button type="button" class="btn btn-sm btn-outline-danger remove-grupo">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="materiales-section mt-3">
+                                        <h6 class="mb-2"><i class="bi bi-box-seam"></i> Materiales del Item</h6>
+                                        <div class="materiales-container">
+                                            {% for material in tablero.materiales.all %}
+                                            <div class="card mb-2 material-container p-2">
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <label class="form-label">Nombre del material *</label>
+                                                        <input type="text" name="tablero_{{ forloop.parentloop.counter0 }}_material_{{ forloop.counter0 }}_nombre" class="form-control" value="{{ material.nombre }}" required>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <label class="form-label">Cantidad</label>
+                                                        <input type="number" name="tablero_{{ forloop.parentloop.counter0 }}_material_{{ forloop.counter0 }}_cantidad" class="form-control material-cantidad" min="1" value="{{ material.cantidad }}">
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <label class="form-label">Valor Unitario</label>
+                                                        <input type="number" name="tablero_{{ forloop.parentloop.counter0 }}_material_{{ forloop.counter0 }}_valor_unitario" class="form-control material-valor" step="1" min="0" value="{{ material.valor_unitario }}">
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <label class="form-label">Descuento (%)</label>
+                                                        <input type="number" name="tablero_{{ forloop.parentloop.counter0 }}_material_{{ forloop.counter0 }}_descuento" class="form-control material-descuento" step="1" min="0" max="100" value="{{ material.descuento }}">
+                                                    </div>
+                                                    <div class="col-md-1 d-flex align-items-end">
+                                                        <button type="button" class="btn btn-sm btn-outline-danger remove-material">
+                                                            <i class="bi bi-trash"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                        <button type="button" class="btn btn-sm btn-primary add-material">
+                                            <i class="bi bi-plus-circle"></i> Agregar Material
+                                        </button>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RESUMEN -->
+                <div class="card mb-4">
+                    <div class="card-header bg-secondary text-white">
+                        <h6 class="mb-0">Resumen de la Venta</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 offset-md-3">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td class="fw-bold">Subtotal:</td>
+                                            <td class="text-end"><span id="subtotal">$0</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">IVA (19%):</td>
+                                            <td class="text-end"><span id="iva">$0</span></td>
+                                        </tr>
+                                        <tr class="table-active">
+                                            <td class="fw-bold">Total:</td>
+                                            <td class="text-end fw-bold text-primary"><span id="total">$0</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <a href="{% url 'ventas:lista' %}" class="btn btn-secondary">
                         <i class="bi bi-x-circle"></i> Cancelar
                     </a>
                     <button type="submit" class="btn btn-success">
-                        <i class="bi bi-save"></i> Guardar Factura
+                        <i class="bi bi-save"></i> Guardar Venta
                     </button>
                 </div>
             </form>
@@ -172,196 +249,280 @@
     </div>
 </div>
 
-<!-- Plantilla para nuevos formularios de items -->
-<template id="empty-item-form">
-    <div class="card mb-3 item-form p-3">
-        <div class="row">
-            <div class="col-md-5 mb-2">
-                <label class="form-label">Descripción</label>
-                <input type="text" name="items-__prefix__-descripcion" class="form-control">
+<script>
+let tableroIndex = 0;
+
+function crearTableroHTML(index) {
+    return `
+        <div class="card mb-2 grupo-card p-2" data-tablero-index="${index}">
+            <div class="row mb-2">
+                <div class="col-md-12">
+                    <strong class="item-label">Item #${index + 1}</strong>
+                </div>
             </div>
-            <div class="col-md-2 mb-2">
-                <label class="form-label">Cantidad</label>
-                <input type="number" name="items-__prefix__-cantidad" class="form-control" min="1" value="1">
+            <div class="row">
+                <div class="col-md-5">
+                    <label class="form-label">Descripción *</label>
+                    <textarea name="tablero_${index}_descripcion" class="form-control" rows="2" required></textarea>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Valor Item</label>
+                    <input type="number" name="tablero_${index}_valor_tablero" class="form-control valor-tablero" step="1" min="0" value="0">
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Descuento Item (%)</label>
+                    <input type="number" name="tablero_${index}_descuento_tablero" class="form-control descuento-tablero" step="1" min="0" max="100" value="0">
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Descuento Materiales (%)</label>
+                    <input type="number" name="tablero_${index}_descuento_materiales" class="form-control descuento-materiales" step="1" min="0" max="100" value="0">
+                </div>
+                <div class="col-md-1 d-flex align-items-end">
+                    <button type="button" class="btn btn-sm btn-outline-danger remove-grupo">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
             </div>
-            <div class="col-md-2 mb-2">
-                <label class="form-label">Valor unitario</label>
-                <input type="number" name="items-__prefix__-valor_unitario" class="form-control" step="0.01" value="0">
-            </div>
-            <div class="col-md-2 mb-2">
-                <label class="form-label">Descuento (%)</label>
-                <input type="number" name="items-__prefix__-descuento" class="form-control" step="0.1" min="0" max="100" value="0">
-            </div>
-            <div class="col-md-1 d-flex align-items-end mb-2">
-                <button type="button" class="btn btn-sm btn-outline-danger remove-item">
-                    <i class="bi bi-trash"></i>
+            <div class="materiales-section mt-3">
+                <h6 class="mb-2"><i class="bi bi-box-seam"></i> Materiales del Item</h6>
+                <div class="materiales-container"></div>
+                <button type="button" class="btn btn-sm btn-primary add-material">
+                    <i class="bi bi-plus-circle"></i> Agregar Material
                 </button>
             </div>
         </div>
-        
-        <!-- Campos ocultos -->
-        <input type="hidden" name="items-__prefix__-id" id="id_items-__prefix__-id">
-        <input type="hidden" name="items-__prefix__-DELETE" id="id_items-__prefix__-DELETE">
-    </div>
-</template>
+    `;
+}
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const formsetDiv = document.getElementById("items-formset");
-    const addButton = document.getElementById("add-item");
-    const totalForms = document.getElementById("id_items-TOTAL_FORMS");
-    const emptyFormTemplate = document.getElementById("empty-item-form");
-    const cotizacionSelect = document.getElementById("cotizacion-select");
-    const ordenSelect = document.getElementById("orden-select");
-    const cargarCotizacionBtn = document.getElementById("cargar-cotizacion");
-    const cargarOrdenBtn = document.getElementById("cargar-orden");
+function crearMaterialHTML(tableroIndex, materialIndex) {
+    return `
+        <div class="card mb-2 material-container p-2">
+            <div class="row">
+                <div class="col-md-5">
+                    <label class="form-label">Nombre del material *</label>
+                    <input type="text" name="tablero_${tableroIndex}_material_${materialIndex}_nombre" class="form-control" required>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Cantidad</label>
+                    <input type="number" name="tablero_${tableroIndex}_material_${materialIndex}_cantidad" class="form-control material-cantidad" min="1" value="1">
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Valor Unitario</label>
+                    <input type="number" name="tablero_${tableroIndex}_material_${materialIndex}_valor_unitario" class="form-control material-valor" step="1" min="0" value="0">
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Descuento (%)</label>
+                    <input type="number" name="tablero_${tableroIndex}_material_${materialIndex}_descuento" class="form-control material-descuento" step="1" min="0" max="100" value="0">
+                </div>
+                <div class="col-md-1 d-flex align-items-end">
+                    <button type="button" class="btn btn-sm btn-outline-danger remove-material">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    tableroIndex = document.querySelectorAll('.grupo-card').length;
+    actualizarEventListeners();
+    calcularTotales();
+    if (document.querySelectorAll('.grupo-card').length === 0) {
+        agregarTablero();
+    }
+});
+
+document.getElementById('add-grupo').addEventListener('click', agregarTablero);
+
+function agregarTablero() {
+    const container = document.getElementById('grupos-container');
+    const newTablero = document.createElement('div');
+    newTablero.innerHTML = crearTableroHTML(tableroIndex);
+    container.appendChild(newTablero.firstElementChild);
     
-    function updateFormsIndex() {
-        const forms = formsetDiv.querySelectorAll(".item-form");
-        totalForms.value = forms.length;
-        
-        forms.forEach((form, index) => {
-            form.querySelectorAll("input, select, textarea").forEach(el => {
-                if (el.name) {
-                    el.name = el.name.replace(/items-\d+-/, `items-${index}-`);
-                }
-                if (el.id) {
-                    el.id = el.id.replace(/id_items-\d+-/, `id_items-${index}-`);
-                }
-            });
+    actualizarEventListeners();
+    tableroIndex++;
+    calcularTotales();
+}
+
+function actualizarEventListeners() {
+    document.querySelectorAll('.remove-grupo').forEach(btn => {
+        btn.replaceWith(btn.cloneNode(true));
+    });
+    document.querySelectorAll('.remove-grupo').forEach(btn => {
+        btn.addEventListener('click', function() {
+            this.closest('.grupo-card').remove();
+            reindexarTableros();
+            calcularTotales();
         });
-    }
-    
-    function addRemoveEventListeners() {
-        document.querySelectorAll(".remove-item").forEach(btn => {
-            btn.addEventListener("click", function() {
-                const form = this.closest(".item-form");
-                const deleteField = form.querySelector("input[name$='DELETE']");
-                
-                if (deleteField) {
-                    deleteField.value = "on";
-                    form.style.display = "none";
-                } else {
-                    form.remove();
-                    updateFormsIndex();
-                }
-            });
-        });
-    }
-    
-    function limpiarItems() {
-        const forms = formsetDiv.querySelectorAll(".item-form");
-        forms.forEach(form => {
-            const deleteField = form.querySelector("input[name$='DELETE']");
-            if (deleteField) deleteField.value = "on";
-            form.style.display = "none";
-        });
-    }
-    
-    function agregarItem(itemData) {
-        const total = parseInt(totalForms.value);
-        const newFormHtml = emptyFormTemplate.innerHTML.replace(/__prefix__/g, total);
-        const newForm = document.createElement("div");
-        newForm.innerHTML = newFormHtml;
-        
-        const itemForm = newForm.querySelector(".item-form");
-        if (itemData.descripcion) itemForm.querySelector("input[name$='descripcion']").value = itemData.descripcion;
-        if (itemData.cantidad) itemForm.querySelector("input[name$='cantidad']").value = itemData.cantidad;
-        if (itemData.valor_unitario) itemForm.querySelector("input[name$='valor_unitario']").value = itemData.valor_unitario;
-        if (itemData.descuento) itemForm.querySelector("input[name$='descuento']").value = itemData.descuento;
-        
-        formsetDiv.appendChild(itemForm);
-        totalForms.value = total + 1;
-        addRemoveEventListeners();
-    }
-    
-    // Agregar nuevo item manualmente
-    addButton.addEventListener("click", function() {
-        agregarItem({});
     });
     
-    // Cargar datos desde cotización
-    cargarCotizacionBtn.addEventListener("click", function() {
-        const cotizacionId = cotizacionSelect.value;
-        if (!cotizacionId) {
-            alert("Por favor, seleccione una cotización.");
-            return;
-        }
-        
-        const url = "{% url 'facturacion:ajax_cargar_cotizacion' 0 %}".replace('0', cotizacionId);
-        
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                // Llenar campos del cliente
-                if (data.cliente_nombre) document.getElementById("id_cliente_nombre").value = data.cliente_nombre;
-                if (data.razon_social) document.getElementById("id_razon_social").value = data.razon_social;
-                if (data.telefono) document.getElementById("id_telefono").value = data.telefono;
-                if (data.correo_electronico) document.getElementById("id_correo_electronico").value = data.correo_electronico;
-                
-                // Establecer cotización relacionada
-                if (document.getElementById("id_cotizacion")) {
-                    document.getElementById("id_cotizacion").value = cotizacionId;
-                }
-                
-                // Limpiar items existentes y agregar nuevos
-                limpiarItems();
-                if (data.items && data.items.length > 0) {
-                    data.items.forEach(item => {
-                        agregarItem(item);
-                    });
-                }
-                
-                alert("Datos de la cotización cargados correctamente.");
-            })
-            .catch(error => {
-                console.error("Error:", error);
-                alert("Error al cargar los datos de la cotización.");
-            });
+    document.querySelectorAll('.add-material').forEach(btn => {
+        btn.replaceWith(btn.cloneNode(true));
+    });
+    document.querySelectorAll('.add-material').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const grupoCard = this.closest('.grupo-card');
+            const tableroIdx = grupoCard.dataset.tableroIndex;
+            const materialesContainer = grupoCard.querySelector('.materiales-container');
+            const materialCount = materialesContainer.querySelectorAll('.material-container').length;
+            
+            const newMaterial = document.createElement('div');
+            newMaterial.innerHTML = crearMaterialHTML(tableroIdx, materialCount);
+            materialesContainer.appendChild(newMaterial.firstElementChild);
+            
+            actualizarEventListeners();
+            calcularTotales();
+        });
     });
     
-    // Cargar datos desde orden de producción
-    cargarOrdenBtn.addEventListener("click", function() {
-        const ordenId = ordenSelect.value;
-        if (!ordenId) {
-            alert("Por favor, seleccione una orden de producción.");
-            return;
-        }
-        
-        const url = "{% url 'facturacion:ajax_cargar_orden' 0 %}".replace('0', ordenId);
-        
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                // Llenar campos del cliente
-                if (data.cliente_nombre) document.getElementById("id_cliente_nombre").value = data.cliente_nombre;
-                if (data.razon_social) document.getElementById("id_razon_social").value = data.razon_social;
-                if (data.telefono) document.getElementById("id_telefono").value = data.telefono;
-                if (data.correo_electronico) document.getElementById("id_correo_electronico").value = data.correo_electronico;
-                
-                // Establecer orden relacionada
-                if (document.getElementById("id_orden_produccion")) {
-                    document.getElementById("id_orden_produccion").value = ordenId;
-                }
-                
-                // Limpiar items existentes y agregar nuevos
-                limpiarItems();
-                if (data.items && data.items.length > 0) {
-                    data.items.forEach(item => {
-                        agregarItem(item);
-                    });
-                }
-                
-                alert("Datos de la orden de producción cargados correctamente.");
-            })
-            .catch(error => {
-                console.error("Error:", error);
-                alert("Error al cargar los datos de la orden de producción.");
-            });
+    document.querySelectorAll('.remove-material').forEach(btn => {
+        btn.replaceWith(btn.cloneNode(true));
+    });
+    document.querySelectorAll('.remove-material').forEach(btn => {
+        btn.addEventListener('click', function() {
+            this.closest('.material-container').remove();
+            calcularTotales();
+        });
     });
     
-    // Inicializar event listeners
-    addRemoveEventListeners();
+    document.querySelectorAll('.valor-tablero, .descuento-tablero, .descuento-materiales, .material-cantidad, .material-valor, .material-descuento').forEach(input => {
+        input.replaceWith(input.cloneNode(true));
+    });
+    document.querySelectorAll('.valor-tablero, .descuento-tablero, .descuento-materiales, .material-cantidad, .material-valor, .material-descuento').forEach(input => {
+        input.addEventListener('input', calcularTotales);
+    });
+}
+
+function reindexarTableros() {
+    const tableros = document.querySelectorAll('.grupo-card');
+    tableros.forEach((tablero, index) => {
+        tablero.dataset.tableroIndex = index;
+        tablero.querySelector('.item-label').textContent = `Item #${index + 1}`;
+        
+        tablero.querySelectorAll('input, textarea').forEach(input => {
+            if (input.name) {
+                input.name = input.name.replace(/tablero_\d+_/, `tablero_${index}_`);
+            }
+        });
+    });
+    tableroIndex = tableros.length;
+}
+
+function calcularTotales() {
+    let subtotalGeneral = 0;
+    
+    document.querySelectorAll('.grupo-card').forEach(tablero => {
+        const valorTablero = parseFloat(tablero.querySelector('.valor-tablero').value) || 0;
+        const descTablero = parseFloat(tablero.querySelector('.descuento-tablero').value) || 0;
+        const descMateriales = parseFloat(tablero.querySelector('.descuento-materiales').value) || 0;
+        
+        const subtotalTablero = valorTablero * (100 - descTablero) / 100;
+        
+        let subtotalMateriales = 0;
+        tablero.querySelectorAll('.material-container').forEach(material => {
+            const cantidad = parseFloat(material.querySelector('.material-cantidad').value) || 0;
+            const valorUnit = parseFloat(material.querySelector('.material-valor').value) || 0;
+            const descMat = parseFloat(material.querySelector('.material-descuento').value) || 0;
+            
+            const subtotalMat = (cantidad * valorUnit) * (100 - descMat) / 100;
+            subtotalMateriales += subtotalMat;
+        });
+        
+        subtotalMateriales = subtotalMateriales * (100 - descMateriales) / 100;
+        subtotalGeneral += subtotalTablero + subtotalMateriales;
+    });
+    
+    const iva = subtotalGeneral * 0.19;
+    const total = subtotalGeneral + iva;
+    
+    document.getElementById('subtotal').textContent = '$' + Math.round(subtotalGeneral).toLocaleString('es-CO');
+    document.getElementById('iva').textContent = '$' + Math.round(iva).toLocaleString('es-CO');
+    document.getElementById('total').textContent = '$' + Math.round(total).toLocaleString('es-CO');
+}
+
+// SCRIPT PARA CARGAR COTIZACIÓN AJAX
+document.getElementById('cargar-cotizacion-venta').addEventListener('click', function() {
+    const cotizacionId = document.getElementById('cotizacion-select-venta').value;
+    
+    if (!cotizacionId) {
+        alert("⚠️ Por favor, seleccione una cotización primero.");
+        return;
+    }
+    
+    const url = "{% url 'ventas:ajax_cargar_cotizacion' 0 %}".replace('0', cotizacionId);
+    
+    const btn = this;
+    const btnOriginalText = btn.innerHTML;
+    btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Cargando...';
+    btn.disabled = true;
+    
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                throw new Error(data.error);
+            }
+            
+            const container = document.getElementById('grupos-container');
+            container.innerHTML = '';
+            tableroIndex = 0;
+            
+            document.getElementById('id_cliente_nombre').value = data.cliente_nombre || "";
+            document.getElementById('id_razon_social').value = data.razon_social || "";
+            document.getElementById('id_telefono').value = data.telefono || "";
+            document.getElementById('id_correo_electronico').value = data.correo_electronico || "";
+            document.getElementById('id_nit').value = data.nit || "";
+            document.getElementById('id_direccion').value = data.direccion || "";
+            
+            if (data.tableros && data.tableros.length > 0) {
+                data.tableros.forEach((tablero, index) => {
+                    agregarTablero();
+                    
+                    setTimeout(() => {
+                        const tableros = container.querySelectorAll('.grupo-card');
+                        const currentTablero = tableros[tableros.length - 1];
+                        
+                        currentTablero.querySelector('textarea[name$="_descripcion"]').value = tablero.descripcion || "";
+                        currentTablero.querySelector('.valor-tablero').value = tablero.valor_tablero || 0;
+                        currentTablero.querySelector('.descuento-tablero').value = tablero.descuento_tablero || 0;
+                        currentTablero.querySelector('.descuento-materiales').value = tablero.descuento_materiales || 0;
+                        
+                        const materialesContainer = currentTablero.querySelector('.materiales-container');
+                        materialesContainer.innerHTML = '';
+                        
+                        if (tablero.materiales && tablero.materiales.length > 0) {
+                            tablero.materiales.forEach((material, matIndex) => {
+                                const addMaterialBtn = currentTablero.querySelector('.add-material');
+                                addMaterialBtn.click();
+                                
+                                setTimeout(() => {
+                                    const materiales = materialesContainer.querySelectorAll('.material-container');
+                                    const currentMaterial = materiales[materiales.length - 1];
+                                    
+                                    currentMaterial.querySelector('[name$="_nombre"]').value = material.nombre || "";
+                                    currentMaterial.querySelector('.material-cantidad').value = material.cantidad || 1;
+                                    currentMaterial.querySelector('.material-valor').value = material.valor_unitario || 0;
+                                    currentMaterial.querySelector('.material-descuento').value = material.descuento || 0;
+                                }, 100 * matIndex);
+                            });
+                        }
+                    }, 200 * index);
+                });
+            }
+            
+            alert("✅ Datos de la cotización cargados correctamente.");
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("❌ Error al cargar los datos: " + error.message);
+        })
+        .finally(() => {
+            btn.innerHTML = btnOriginalText;
+            btn.disabled = false;
+            setTimeout(() => calcularTotales(), 1000);
+        });
 });
 </script>
 {% endblock %}

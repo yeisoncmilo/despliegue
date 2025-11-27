@@ -10,15 +10,15 @@ class OrdenProduccionForm(forms.ModelForm):
             "color", "observaciones", "estado", "cotizacion", "archivo"
         ]
         widgets = {
-            "cliente_nombre": forms.TextInput(attrs={"class": "form-control", "placeholder": "Nombre completo del cliente"}),
-            "razon_social": forms.TextInput(attrs={"class": "form-control", "placeholder": "Opcional"}),
-            "nit": forms.TextInput(attrs={"class": "form-control", "placeholder": "NIT o documento"}),
-            "direccion": forms.TextInput(attrs={"class": "form-control", "placeholder": "Dirección de entrega"}),
-            "telefono": forms.TextInput(attrs={"class": "form-control", "placeholder": "Teléfono de contacto"}),
-            "correo_electronico": forms.EmailInput(attrs={"class": "form-control", "placeholder": "email@ejemplo.com"}),
-            "tipo_tablero": forms.TextInput(attrs={"class": "form-control", "placeholder": "Ej: MDF, Melamina, Plywood"}),
-            "dimensiones": forms.TextInput(attrs={"class": "form-control", "placeholder": "Ej: 2440x1220x18mm"}),
-            "color": forms.TextInput(attrs={"class": "form-control", "placeholder": "Color del tablero"}),
+            "cliente_nombre": forms.TextInput(attrs={"class": "form-control"}),
+            "razon_social": forms.TextInput(attrs={"class": "form-control"}),
+            "nit": forms.TextInput(attrs={"class": "form-control"}),
+            "direccion": forms.TextInput(attrs={"class": "form-control"}),
+            "telefono": forms.TextInput(attrs={"class": "form-control"}),
+            "correo_electronico": forms.EmailInput(attrs={"class": "form-control"}),
+            "tipo_tablero": forms.TextInput(attrs={"class": "form-control"}),
+            "dimensiones": forms.TextInput(attrs={"class": "form-control"}),
+            "color": forms.TextInput(attrs={"class": "form-control"}),
             "observaciones": forms.Textarea(attrs={"class": "form-control", "rows": 3, "placeholder": "Notas adicionales..."}),
             "estado": forms.Select(attrs={"class": "form-select"}),
             "cotizacion": forms.Select(attrs={"class": "form-select", "data-cotizacion-select": "true"}),
@@ -30,6 +30,6 @@ class MaterialProduccionForm(forms.ModelForm):
         model = MaterialProduccion
         fields = ["nombre", "cantidad"]
         widgets = {
-            "nombre": forms.TextInput(attrs={"class": "form-control", "placeholder": "Nombre del material"}),
+            "nombre": forms.TextInput(attrs={"class": "form-control"}),
             "cantidad": forms.NumberInput(attrs={"class": "form-control", "min": 1}),
         }

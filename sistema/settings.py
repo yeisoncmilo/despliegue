@@ -1,27 +1,39 @@
 """
 Django settings for sistema project.
-Configuración lista para desarrollo. En producción, usar variables de entorno.
+Configuración lista para desplegar en Render y funcionar en local.
 """
 
 from pathlib import Path
 import os
+import dj_database_url
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
+# ==========================
+# SECRET KEY
+# ==========================
+SECRET_KEY = os.environ.get(
+    'SECRET_KEY',
+    default='django-insecure-*j)fyc85ji*-57-opj0l#a(lbtacq%ca!$&#)lathi*t9!cc3h'
+)
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-*j)fyc85ji*-57-opj0l#a(lbtacq%ca!$&#)lathi*t9!cc3h'
+# ==========================
+# DEBUG
+# ==========================
+DEBUG = 'RENDER' not in os.environ
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
+# ==========================
+# ALLOWED HOSTS
+# ==========================
 ALLOWED_HOSTS = []
 
-# Application definition
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
+# ==========================
+# APPS
+# ==========================
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -30,14 +42,25 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+
+    # API
+    'rest_framework',
+    'rest_framework.authtoken',
+
+    # APPS DEL PROYECTO
     'autenticacion',
     'cotizaciones',
     'produccion',
-    'diseno'
+    'diseno',
+    'ventas',
 ]
 
+# ==========================
+# MIDDLEWARE
+# ==========================
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -48,6 +71,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'sistema.urls'
 
+# ==========================
+# TEMPLATES
+# ==========================
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -65,78 +91,91 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'sistema.wsgi.application'
 
-# Database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'final',
-        'USER': 'root',  
-        'PASSWORD': '25053614', 
-        'HOST': 'localhost', 
-        'PORT': '3306',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+# ==========================
+# BASE DE DATOS
+# ==========================
+DATABASE_URL = os.environ.get('DATABASE_URL')
+
+if DATABASE_URL:
+    # Producción (Render usa DATABASE_URL)
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=DATABASE_URL,
+            conn_max_age=600
+        )
+    }
+else:
+    # Local sin dj_database_url (corrección error Unicode)
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'syncropro_final',
+            'USER': 'postgres',
+            'PASSWORD': '25053614',
+            'HOST': 'localhost',
+            'PORT': '5434',
         }
     }
-}
 
-# Password validation
+# ==========================
+# VALIDADORES
+# ==========================
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-# Internationalization
+# ==========================
+# INTERNACIONALIZACIÓN
+# ==========================
 LANGUAGE_CODE = 'es-co'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# Static files
-STATIC_URL = 'static/'
+# ==========================
+# ARCHIVOS ESTÁTICOS
+# ==========================
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')   # ← siempre definido
 
-# Default primary key field type
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+if not DEBUG:
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# Auth redirects
+# ==========================
+# ARCHIVOS MEDIA
+# ==========================
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# ==========================
+# CONFIG USUARIO PERSONALIZADO
+# ==========================
+AUTH_USER_MODEL = 'autenticacion.UsuarioPersonalizado'
+
+# ==========================
+# LOGIN / LOGOUT
+# ==========================
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/dashboard/'
 LOGOUT_REDIRECT_URL = '/login/'
 
-# Custom user model
-AUTH_USER_MODEL = 'autenticacion.UsuarioPersonalizado'
-
-# Media files
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
-
-# Email Configuration - VALORES DIRECTOS PARA DESARROLLO
-# EN PRODUCCIÓN: usar variables de entorno o python-decouple
+# ==========================
+# EMAIL
+# ==========================
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-
-# ⚠️ IMPORTANTE: Reemplaza con tu contraseña de aplicación de Gmail SIN ESPACIOS
 EMAIL_HOST_USER = 'yeisoncamilo.morenorios@gmail.com'
-EMAIL_HOST_PASSWORD = 'saubmftkzgwiizix '  # ←←← MODIFICA ESTO
-
-# Si la contraseña tiene espacios, elimínalos todos
-# Ejemplo correcto: 'abcd efgh ijkl mnop' → 'abcdefghijklmnop'
-
+EMAIL_HOST_PASSWORD = 'saubmftkzgwiizix'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-# Logging configuration
+# ==========================
+# LOGGING
+# ==========================
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

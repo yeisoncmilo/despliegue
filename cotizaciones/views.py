@@ -144,6 +144,21 @@ def eliminar_cotizacion(request, pk):
         return redirect('cotizaciones:lista')
     return render(request, 'cotizaciones/confirmar_eliminar.html', {'cotizacion': cotizacion})
 
+@login_required
+def cambiar_estado_cotizacion(request, pk):
+    cotizacion = get_object_or_404(Cotizacion, pk=pk)
+    
+    if request.method == 'POST':
+        nuevo_estado = request.POST.get('estado')
+        if nuevo_estado in dict(Cotizacion.ESTADO_CHOICES):
+            cotizacion.estado = nuevo_estado
+            cotizacion.save()
+            messages.success(request, f"✅ Estado actualizado a '{cotizacion.get_estado_display()}'")
+        else:
+            messages.error(request, "❌ Estado inválido")
+    
+    return redirect('cotizaciones:detalle', pk=pk)
+
 def generar_pdf_cotizacion(request, pk, to_buffer=None):
     from reportlab.lib.pagesizes import letter
     from reportlab.lib import colors

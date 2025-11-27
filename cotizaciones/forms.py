@@ -6,7 +6,7 @@ class CotizacionForm(forms.ModelForm):
         model = Cotizacion
         fields = [
             "cliente_nombre", "razon_social", "nit", "direccion",
-            "telefono", "correo_electronico"
+            "telefono", "correo_electronico", "estado"
         ]
         widgets = {
             "cliente_nombre": forms.TextInput(attrs={"class": "form-control"}),
@@ -15,4 +15,5 @@ class CotizacionForm(forms.ModelForm):
             "direccion": forms.TextInput(attrs={"class": "form-control"}),
             "telefono": forms.TextInput(attrs={"class": "form-control"}),
             "correo_electronico": forms.EmailInput(attrs={"class": "form-control"}),
+            "estado": forms.Select(attrs={"class": "form-control"}),
         }
